@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { PublicRoutingModule } from './public-routing.module';
+
+import { SharedModule } from 'src/app/shared/shared.module';
 
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -22,7 +25,8 @@ import { PasswordRecoveryComponent } from './password-recovery/password-recovery
   ],
   imports: [
     CommonModule,
-    PublicRoutingModule
+    PublicRoutingModule,
+    SharedModule
   ]
 })
 export class PublicModule { }

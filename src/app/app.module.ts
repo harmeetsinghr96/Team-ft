@@ -1,12 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 
-import { LayoutModule } from './layout/layout.module';
-
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { LayoutModule } from './layout/layout.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -14,9 +15,10 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    RouterModule,
     AppRoutingModule,
-    LayoutModule
+    BrowserAnimationsModule,
+    LayoutModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

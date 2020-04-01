@@ -1,1 +1,135 @@
-/* You can add global styles to this file, and also import other style files */
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$team-ft-primary: mat-palette($mat-indigo);
+$team-ft-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$team-ft-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$team-ft-theme: mat-light-theme($team-ft-primary, $team-ft-accent, $team-ft-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($team-ft-theme);
+
+html, body { height: 100%; }
+body { margin: 0; padding: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+// theming colors
+$backgroundContainers: #404040;
+$image-bg:  #47d1d1;
+
+$input-color: #248f8f;
+$input-font-size: 11px;
+
+$input-height: 32px;
+$button-height: 33px;
+
+
+$font-family: inherit;
+$font-weight-100: 100;
+$font-weight-200: 200;
+$font-weight-300: 300;
+$font-weight-400: 400;
+$font-weight-500: 500;
+
+#public .container-fluid {
+  background-color: $backgroundContainers;
+  height: 100vh;
+  font-family: inherit;
+}
+
+// #public .container-fluid .row .col-sm-4 {
+//   background-color: red;
+// }
+
+#public .container-fluid .row .col-sm-4 .router-box {
+  margin-top: 80px;
+}
+
+#form form input {
+  height: $input-height;
+  border-radius: 0px;
+  border: 1px solid white;
+  font-size: $input-font-size;
+  font-weight: $font-weight-400;
+  font-family: $font-family;
+  color: $input-color;
+}
+
+#form form input::placeholder {
+  font-size: $input-font-size;
+  color: $input-color;
+}
+
+#form form input:focus {
+  box-shadow: none;
+}
+
+#form form button {
+  box-shadow: none;
+  width: 100%;
+  font-family: inherit;
+  font-size: $input-font-size;
+  height: $button-height;
+  background-color: $input-color;
+  border: 1px solid $input-color;
+}
+
+#form form button:focus {
+  box-shadow: none;
+}
+
+#form form button:hover {
+  background-color: $backgroundContainers;
+  color: $input-color;
+  border: 1px solid $input-color;
+}
+
+#form form .links .links-routes {
+  text-align: center;
+  margin-top: 5px;
+}
+
+#form form .links .links-routes .register, #form form .links .links-routes .forgot {
+  font-size: 11px ;
+  font-weight: $font-weight-400;
+  color: #737373;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+#form form .links .links-routes .register:focus, #form form .links .links-routes .forgot:focus {
+  box-shadow: none;
+  text-decoration: none;
+  border: none;
+  outline: none;
+}
+
+
+#form form .links .links-routes .center-line-register-forgot {
+  font-size: 11px;
+  font-weight: $font-weight-400;
+  padding: 0 5px 0 5px;
+  color: #737373;
+}
+
+
+
+
+
