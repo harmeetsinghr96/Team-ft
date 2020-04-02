@@ -72,11 +72,19 @@ $font-weight-500: 500;
 }
 
 #public .container-fluid .row .logo img {
-  height: 160px;
+  height: 140px;
 }
 
 #public .container-fluid .row .col-boxes .router-box {
   margin-top: 50px;
+}
+
+#form .heading-text h5 {
+  text-align: center;
+  color: $image-bg;
+  padding-bottom: 18px;
+  font-size: 24px;
+  font-family: $font-family-caavier-bold;
 }
 
 #form form input {
