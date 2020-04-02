@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { StoreModule } from '@ngrx/store';
-import combinedReducer from './_store/_reducer/index.reducer';
+import combinedReducer from './_store/store.reducer';
 
 import { LayoutModule } from './layout/layout.module';
 import { SharedModule } from './shared/shared.module';
