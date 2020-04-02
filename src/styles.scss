@@ -30,18 +30,31 @@ html, body { height: 100%; }
 body { margin: 0; padding: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
+@font-face {
+  font-family: CaviarDreams Bold;
+  src: url('/assets/fonts/fonts/CaviarDreams_Bold.ttf');
+}
+
+@font-face {
+  font-family: CaviarDreams;
+  src: url('/assets/fonts/fonts/CaviarDreams.ttf');
+}
+
+
 // theming colors
 $backgroundContainers: #404040;
 $image-bg:  #47d1d1;
 
-$input-color: #248f8f;
-$input-font-size: 11px;
+$input-color: #196666;
+$button-color: #248f8f;
+$input-font-size: 14px;
 
-$input-height: 32px;
-$button-height: 33px;
+$input-height: 42px;
+$button-height: 45px;
 
 
-$font-family: inherit;
+$font-family-caavier: CaviarDreams;
+$font-family-caavier-bold: CaviarDreams Bold;
 $font-weight-100: 100;
 $font-weight-200: 200;
 $font-weight-300: 300;
@@ -54,12 +67,16 @@ $font-weight-500: 500;
   font-family: inherit;
 }
 
-// #public .container-fluid .row .col-sm-4 {
-//   background-color: red;
-// }
+#public .container-fluid .row .logo {
+  text-align: center;
+}
 
-#public .container-fluid .row .col-sm-4 .router-box {
-  margin-top: 80px;
+#public .container-fluid .row .logo img {
+  height: 160px;
+}
+
+#public .container-fluid .row .col-boxes .router-box {
+  margin-top: 50px;
 }
 
 #form form input {
@@ -68,7 +85,7 @@ $font-weight-500: 500;
   border: 1px solid white;
   font-size: $input-font-size;
   font-weight: $font-weight-400;
-  font-family: $font-family;
+  font-family: $font-family-caavier-bold;
   color: $input-color;
 }
 
@@ -84,33 +101,40 @@ $font-weight-500: 500;
 #form form button {
   box-shadow: none;
   width: 100%;
-  font-family: inherit;
+  font-family: $font-family-caavier-bold;
   font-size: $input-font-size;
   height: $button-height;
-  background-color: $input-color;
+  background-color: $button-color;
   border: 1px solid $input-color;
+}
+
+#form form button:disabled {
+  background-color: transparent;
+  color: $image-bg;
+  border: 1px solid $image-bg;
 }
 
 #form form button:focus {
   box-shadow: none;
+  outline: none;
 }
 
 #form form button:hover {
   background-color: $backgroundContainers;
-  color: $input-color;
-  border: 1px solid $input-color;
+  color: $image-bg;
+  border: 1px solid $image-bg;
 }
 
 #form form .links .links-routes {
   text-align: center;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 #form form .links .links-routes .register, #form form .links .links-routes .forgot {
-  font-size: 11px ;
-  font-weight: $font-weight-400;
+  font-size: 14px ;
+  font-weight: bolder !important;
   color: #737373;
-  font-family: inherit;
+  font-family: $font-family-caavier;
   cursor: pointer;
 }
 
@@ -123,10 +147,17 @@ $font-weight-500: 500;
 
 
 #form form .links .links-routes .center-line-register-forgot {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: $font-weight-400;
   padding: 0 5px 0 5px;
   color: #737373;
+}
+
+#form form .form-group small {
+  font-size: 12px;
+  font-weight: bolder !important;
+  color: #ff4d4d !important;
+  font-family: $font-family-caavier;
 }
 
 

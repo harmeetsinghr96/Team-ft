@@ -1,15 +1,32 @@
 <section id="form">
   <div class="row justify-content-center">
-    <form class="col-sm-12">
+    <form [formGroup]="formData" role="form" name="formData" novalidate="" (ngSubmit)="login($event, formData.value)" class="col-sm-12">
+
       <div class="form-group">
-        <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="Enter email">
+
+        <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="Enter email" name="email" autocomplete="off" formControlName="email" required="">
+
+        <small class="text-danger " *ngIf="formData.get('email').hasError('pattern') && (formData.controls['email'].dirty || formData.controls['email'].touched)">Email must be a valid email address.</small>
+
+        <small class="text-danger" *ngIf="formData.controls['email'].hasError('required') && (formData.controls['email'].dirty || formData.controls['email'].touched)">Email is required*</small>
+
       </div>
+
       <div class="form-group">
-        <input type="password" class="form-control" id="password" placeholder="Enter password">
+
+        <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" autocomplete="off" formControlName="password" [formControl]="formData.get('password')" required="">
+
+        <small class="text-danger" *ngIf="formData.get('password').hasError('required') && (formData.get('password').dirty || formData.get('password').touched)">
+          This field is required</small>
+
+        <small class="text-danger" *ngIf="formData.get('password').hasError('pattern') && (formData.get('password').dirty || formData.get('password').touched)">Input should match 'a-zA-Z0-9' and 6-10 length</small>
+
       </div>
-      <button type="submit" class="btn btn-primary">Login</button>
+
+      <button type="submit" class="btn btn-primary" [disabled]="formData.invalid">Login</button>
+
       <div class="links row justify-content-center">
-        <div class="col-sm-7 links-routes">
+        <div class="col-sm-8 links-routes">
           <span class="register" [routerLink]="['/register']">Register</span>
           <span class="center-line-register-forgot">|</span>
           <span class="forgot" [routerLink]="['/forgot-password']">Forgot password?</span>

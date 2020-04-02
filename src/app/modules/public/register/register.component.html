@@ -1,28 +1,53 @@
 <section id="form">
   <div class="row justify-content-center">
-    <form class="col-sm-12">
+    <form [formGroup]="formData" role="form" name="formData" novalidate="" (ngSubmit)="register($event, formData.value)" class="col-sm-12">
+
       <div class="form-group">
-        <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Enter Name">
+
+        <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Enter Name" name="full_name" autocomplete="off" formControlName="full_name" required="">
+
+        <small class="text-danger" *ngIf="formData.controls['full_name'].hasError('required') && (formData.controls['full_name'].dirty || formData.controls['full_name'].touched)">Name is required*</small>
+
       </div>
+
       <div class="form-group">
-        <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="Enter email">
+
+        <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="Enter email" name="email" autocomplete="off" formControlName="email" required="">
+
+        <small class="text-danger " *ngIf="formData.get('email').hasError('pattern') && (formData.controls['email'].dirty || formData.controls['email'].touched)">Email must be a valid email address.</small>
+
+        <small class="text-danger" *ngIf="formData.controls['email'].hasError('required') && (formData.controls['email'].dirty || formData.controls['email'].touched)">Email is required*</small>
+
       </div>
+
       <div class="form-group">
-        <input type="text" class="form-control" id="company_name" aria-describedby="company_name" placeholder="Company">
+
+        <input type="text" class="form-control" id="company_name" aria-describedby="company_full_name" placeholder="Company" name="company_full_name" autocomplete="off" formControlName="company_full_name" required="">
+
+        <small class="text-danger" *ngIf="formData.controls['company_full_name'].hasError('required') && (formData.controls['company_full_name'].dirty || formData.controls['company_full_name'].touched)">Company is required*</small>
+
       </div>
+
       <div class="form-group">
-        <input type="password" class="form-control" id="password" placeholder="Enter password">
+
+        <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" autocomplete="off" formControlName="password" [formControl]="formData.get('password')" required="">
+
+        <small class="text-danger" *ngIf="formData.get('password').hasError('required') && (formData.get('password').dirty || formData.get('password').touched)">
+          This field is required</small>
+
+        <small class="text-danger" *ngIf="formData.get('password').hasError('pattern') && (formData.get('password').dirty || formData.get('password').touched)">Password must have letters && numbers and 6-10 length</small>
+
       </div>
-      <div class="form-group">
-        <input type="password" class="form-control" id="password" placeholder="Re-enter password">
-      </div>
-      <button type="submit" class="btn btn-primary">Register</button>
+
+      <button type="submit" class="btn btn-primary" [disabled]="formData.invalid">Register</button>
+
       <div class="links row justify-content-center">
-        <div class="col-sm-7 links-routes">
+        <div class="col-sm-8 links-routes">
           <span class="center-line-register-forgot">Existing account?</span>
           <span class="forgot" [routerLink]="['/login']">Login</span>
         </div>
       </div>
+
     </form>
   </div>
 </section>

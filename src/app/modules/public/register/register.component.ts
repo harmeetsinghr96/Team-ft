@@ -8,19 +8,33 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  public form: FormGroup;
+  public formData: FormGroup;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.initForm();
   }
 
-  initForm() {
-    this.form = new FormGroup({
-      full_name: new FormControl(null, Validators.required),
-      email: new FormControl(null, Validators.required),
+  register($ev, values) {
+    console.log(values);
+    $ev.preventDefault();
+    // tslint:disable-next-line: forin
+    for (const control in this.formData.controls) {
+      this.formData.controls[control].markAsTouched();
+    }
+  }
+
+  private initForm() {
+    const passwordExp = '(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{6,15})$';
+    const emailExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+    this.formData = new FormGroup({
+      full_name: new FormControl(null, Validators.compose([Validators.required])),
+      email: new FormControl(null, Validators.compose([Validators.required, Validators.pattern(emailExp)])),
       company_full_name: new FormControl(null, Validators.required),
-      password: new FormControl(null, Validators.required)
+      password: new FormControl(null, Validators.compose([Validators.required, Validators.pattern(passwordExp)])),
     });
   }
+
 }
