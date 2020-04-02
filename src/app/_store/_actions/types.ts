@@ -1,0 +1,5 @@
+export const LOGIN = 'LOGIN';
+export const REGISTER = 'REGISTER';
+export const FORGOT_PASSWORD = 'FORGOT_PASSWORD';
+export const INVITATION = 'INVITATION';
+export const EMAIL_VERIFICATION = 'EMAIL_VERIFICATION';
