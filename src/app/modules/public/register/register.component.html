@@ -37,7 +37,7 @@
         <small class="text-danger" *ngIf="formData.get('password').hasError('required') && (formData.get('password').dirty || formData.get('password').touched)">
           This field is required</small>
 
-        <small class="text-danger" *ngIf="formData.get('password').hasError('pattern') && (formData.get('password').dirty || formData.get('password').touched)">Password must have letters && numbers and 6-10 length</small>
+        <small class="text-danger" *ngIf="formData.get('password').hasError('pattern') && (formData.get('password').dirty || formData.get('password').touched)">Password only contains letters && numbers, don't include any special character.</small>
 
       </div>
 
