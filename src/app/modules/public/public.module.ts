@@ -15,6 +15,7 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { AuthEffets } from 'src/app/_store/_effects/auth.effext';
 import { SuccessRegisterComponent } from './success-register/success-register.component';
+import { PlaceholderDirective } from '../../directives/placeholder.directive';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SuccessRegisterComponent } from './success-register/success-register.co
     InvitationComponent,
     EmailVerificationComponent,
     PasswordRecoveryComponent,
-    SuccessRegisterComponent
+    SuccessRegisterComponent,
+    PlaceholderDirective
   ],
   imports: [
     CommonModule,

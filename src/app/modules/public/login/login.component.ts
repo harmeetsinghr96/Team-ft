@@ -1,11 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import * as state from '../../../_store/store.reducer';
 import * as AuthActions from '../../../_store/_actions/auth.actions';
-import { Observable, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-login',
@@ -17,14 +15,13 @@ export class LoginComponent implements OnInit {
   public formData: FormGroup;
   public error: string;
 
+
   constructor(private store: Store<state.AppState>, private router: Router) { }
 
   ngOnInit(): void {
     this.store.select('auth').subscribe(authState => {
       this.error = authState.error;
-      if (this.error) {
-        console.log(this.error);
-      }
+      if (this.error) {}
     });
     this.initForm();
   }
@@ -53,5 +50,7 @@ export class LoginComponent implements OnInit {
       password: new FormControl(null, Validators.compose([Validators.required, Validators.pattern(passwordExp)])),
     });
   }
+
+
 
 }
