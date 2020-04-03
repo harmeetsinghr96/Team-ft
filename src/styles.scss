@@ -170,6 +170,98 @@ $font-weight-500: 500;
 }
 
 
+#registerd .row .col-sm-12 h3 {
+  padding-top: 22.5px;
+  font-size: 24px;
+  font-family: $font-family-caavier-bold;
+  color: $image-bg;
+  text-align: center;
+}
+
+#registerd .row .col-sm-12 p {
+  font-size: 16px;
+  font-family: $font-family-caavier;
+  font-size: 500 !important;
+  color: $image-bg;
+  padding: 10px 0 10px 0;
+  text-align: center;
+}
+
+// spinner start
+#loader-container {
+  float: left;
+  width: 100%;
+  height: 100vh;
+  background: #404040;
+  position: fixed;
+  z-index: 9999999999;
+  font-family: $font-family-caavier-bold !important;
+}
+
+#loader-container h3 {
+  font-family: CaviarDreams Bold !important;
+  color: #47d1d1;
+  font-size: 44px;
+}
+
+#loader-container .spinner {
+    margin: 40vh auto 0px;
+    width: 150px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    margin: unset !important;
+  }
+
+#loader-container .spinner > div {
+  width: 15px;
+  height: 15px;
+  background-color: #47d1d1;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.5s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.5s infinite ease-in-out both;
+}
+
+#loader-container .spinner .bounce1 {
+  -webkit-animation-delay: -0.35s;
+  animation-delay: -0.35s;
+}
+
+#loader-container  .spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
 
 
+@-webkit-keyframes sk-bouncedelay {
 
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0)
+  }
+
+  40% {
+    -webkit-transform: scale(1.0)
+  }
+}
+
+@keyframes sk-bouncedelay {
+
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  40% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+  }
+}
+
+// spinner end

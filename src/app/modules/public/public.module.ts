@@ -14,6 +14,7 @@ import { PasswordRecoveryComponent } from './password-recovery/password-recovery
 import { EffectsModule } from '@ngrx/effects';
 
 import { AuthEffets } from 'src/app/_store/_effects/auth.effext';
+import { SuccessRegisterComponent } from './success-register/success-register.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AuthEffets } from 'src/app/_store/_effects/auth.effext';
     ForgotPasswordComponent,
     InvitationComponent,
     EmailVerificationComponent,
-    PasswordRecoveryComponent
+    PasswordRecoveryComponent,
+    SuccessRegisterComponent
   ],
   imports: [
     CommonModule,

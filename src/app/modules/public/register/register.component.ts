@@ -20,16 +20,15 @@ export class RegisterComponent implements OnInit {
     this.store$.select('auth').subscribe(authState => {
       this.error = authState.error;
       if (this.error) {
-        console.log(this.error);
+        alert(this.error);
       }
     });
     this.initForm();
   }
 
   register($ev, values) {
-    console.log(values);
     $ev.preventDefault();
-    // tslint:disable-next-line: forin
+   // tslint:disable-next-line: forin
     for (const control in this.formData.controls) {
       this.formData.controls[control].markAsTouched();
     }
