@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/_store/store.reducer';
+import * as AuthActions from '../../../_store/_actions/auth.actions';
 
 @Component({
   selector: 'app-register',
@@ -10,10 +12,17 @@ import { Store } from '@ngrx/store';
 export class RegisterComponent implements OnInit {
 
   public formData: FormGroup;
+  public error: string;
 
-  constructor(private store: Store) { }
+  constructor(private store$: Store<AppState>) { }
 
   ngOnInit(): void {
+    this.store$.select('auth').subscribe(authState => {
+      this.error = authState.error;
+      if (this.error) {
+        console.log(this.error);
+      }
+    });
     this.initForm();
   }
 
@@ -23,6 +32,15 @@ export class RegisterComponent implements OnInit {
     // tslint:disable-next-line: forin
     for (const control in this.formData.controls) {
       this.formData.controls[control].markAsTouched();
+    }
+
+    if (this.formData.valid) {
+      const full_name = this.formData.value.full_name;
+      const email = this.formData.value.email;
+      const company_full_name = this.formData.value.company_full_name;
+      const password = this.formData.value.password;
+
+      this.store$.dispatch(new AuthActions.RegisterStart({ full_name, email, company_full_name, password }));
     }
   }
 

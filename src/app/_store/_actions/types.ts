@@ -1,9 +1,13 @@
-export const LOGIN = '[AUth] LOGIN';
-export const REGISTER = '[AUth] REGISTER';
+export const LOGIN = '[AUTH] LOGIN';
+export const LOGIN_START = '[AUTH] LOGIN START';
+export const LOGIN_FAILED = '[AUTH] LOGIN FAILED';
+export const LOGOUT = '[AUTH] LOGOUT';
+
+export const REGISTER = '[AUTH] REGISTER';
+export const REGISTER_START = '[AUTH] REGISTER_START';
+export const REGISTER_FAILED = '[AUTH] REGISTER_FAILED';
+
 export const FORGOT_PASSWORD = '[AUth] FORGOT_PASSWORD';
 export const INVITATION = 'INVITATION';
 export const EMAIL_VERIFICATION = '[AUth] EMAIL_VERIFICATION';
 
-// effects types
-export const LOGIN_START = '[AUth] LOGIN START';
-export const LOGIN_FAILED = '[AUth] LOGIN FAILED';

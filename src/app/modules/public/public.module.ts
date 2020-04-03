@@ -11,8 +11,9 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { InvitationComponent } from './invitation/invitation.component';
 import { EmailVerificationComponent } from './email-verification/email-verification.component';
 import { PasswordRecoveryComponent } from './password-recovery/password-recovery.component';
+import { EffectsModule } from '@ngrx/effects';
 
-
+import { AuthEffets } from 'src/app/_store/_effects/auth.effext';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PasswordRecoveryComponent } from './password-recovery/password-recovery
   imports: [
     CommonModule,
     PublicRoutingModule,
-    SharedModule
+    SharedModule,
+    EffectsModule.forFeature([AuthEffets])
   ]
 })
 export class PublicModule { }
