@@ -86,6 +86,36 @@ export class AuthEffets {
     })
   );
 
+  @Effect()
+  Forgot = this.actions$.pipe(
+    ofType(types.FORGOT_START),
+
+    switchMap((authData: AuthActions.ForgotStart) => {
+
+      const user: User = {
+        email: authData.payload.user.email
+      };
+
+      return this.apiService.forgot(user).pipe(
+        map((res: any) => {
+          return new AuthActions.Forgot();
+        }),
+        catchError((errorRes: any) => {
+          let errorMessage = 'An unknown error occurred!';
+          if (!errorRes.error || !errorRes.error.message) {
+            return of(new AuthActions.ForgotFailed(errorMessage));
+          }
+
+          if (errorRes.error.message) {
+            errorMessage = errorRes.error.message;
+            return of(new AuthActions.ForgotFailed(errorMessage));
+          }
+          return of(new AuthActions.ForgotFailed(errorMessage));
+        })
+      );
+    })
+  );
+
   @Effect({ dispatch: false })
   authSuccess = this.actions$.pipe(
     ofType(types.REGISTER),

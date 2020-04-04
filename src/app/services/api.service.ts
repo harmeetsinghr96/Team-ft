@@ -20,5 +20,9 @@ export class ApiService {
     return this.http.post<AuthResponse>('user/register', data);
   }
 
+  public forgot(data) {
+    return this.http.post<AuthResponse>('user/forgot_password', data);
+  }
+
 }
 

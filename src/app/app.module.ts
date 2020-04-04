@@ -25,6 +25,8 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { PublicModule } from './modules/public/public.module';
+import { PrivateModule } from './modules/private/private.module';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { AlertComponent } from './components/alert/alert.component';
     EffectsModule.forRoot([AuthEffets]),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),
     LayoutModule,
-    SharedModule
+    SharedModule,
+    PublicModule,
+    PrivateModule
   ],
   providers: [
     ApiService,

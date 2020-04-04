@@ -19,7 +19,8 @@ export class LoginComponent implements OnInit {
   public formData: FormGroup;
   public error: string;
   public user: any;
-  public comapny: any;
+  public comapny: Array<any>;
+  protected token: string;
 
   private closeSub: Subscription;
   @ViewChild(PlaceholderDirective, { static: false }) alertHost: PlaceholderDirective;
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit {
     this.store.select('auth').subscribe(authState => {
       this.error = authState.error;
       this.user = authState.user;
+      this.token = authState.token;
       if (this.error) {
         this.showErrorAlert(this.error);
       }
@@ -40,7 +42,7 @@ export class LoginComponent implements OnInit {
       if (this.user) {
         this.comapny = this.user.company;
 
-        if (this.comapny) {
+        if (this.comapny.length > 0) {
           const inputs: Array<any> = this.form.nativeElement.elements;
           const email: HTMLInputElement = inputs[0];
           const password: HTMLInputElement = inputs[1];
@@ -48,6 +50,12 @@ export class LoginComponent implements OnInit {
           email.setAttribute('disabled', 'true');
           password.setAttribute('disabled', 'true');
         }
+      }
+
+      if (this.user && this.token) {
+        localStorage.setItem('user', JSON.stringify(this.user));
+        localStorage.setItem('token', this.token);
+        this.router.navigateByUrl('/dashboard');
       }
     });
     this.initForm();

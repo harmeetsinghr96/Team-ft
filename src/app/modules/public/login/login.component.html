@@ -19,7 +19,7 @@
 
       </div>
 
-      <div class="form-group" >
+      <div class="form-group">
 
         <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" autocomplete="off" formControlName="password" [formControl]="formData.get('password')">
 
@@ -33,15 +33,15 @@
       <div *ngIf="this.comapny" class="form-group">
         <div class="row">
           <div class="col-sm-12 company">
-            <div class="box">
+            <div class="box" *ngFor="let company of this.comapny">
               <div class="media">
-                <img [src]="this.comapny.avatar === null ? 'this.comapny.avatar' : '../../../../assets/img/logo.png'" class="img-fluid" [alt]="'this.comapny.comapny_full_name'">
+                <img [src]="company.avatar === null ? 'this.comapny.avatar' : '../../../../assets/img/logo.png'" class="img-fluid" [alt]="'this.comapny.comapny_full_name'">
                 <div class="media-body">
-                  <h5 class="mt-1 ml-2 company_name"> {{ this.comapny.company_full_name }} </h5>
+                  <h5 class="mt-1 ml-2 company_name"> {{ company.company_full_name }} </h5>
                 </div>
 
                 <div class="custom-control custom-switch mt-1">
-                  <input type="checkbox" class="custom-control-input" (change)="login($event, this.comapny.id)" id="switch1" name="example">
+                  <input type="checkbox" class="custom-control-input" (change)="login($event, company.id)" id="switch1" name="example">
                   <label class="custom-control-label" for="switch1"></label>
                 </div>
               </div>

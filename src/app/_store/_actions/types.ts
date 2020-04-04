@@ -7,7 +7,10 @@ export const REGISTER = '[AUTH] REGISTER';
 export const REGISTER_START = '[AUTH] REGISTER_START';
 export const REGISTER_FAILED = '[AUTH] REGISTER_FAILED';
 
-export const FORGOT_PASSWORD = '[AUth] FORGOT_PASSWORD';
+export const FORGOT = '[AUth] FORGOT';
+export const FORGOT_START = '[AUTH] FORGOT_START';
+export const FORGOT_FAILED = '[AUTH] FORGOT_FAILED';
+
 export const INVITATION = 'INVITATION';
 export const EMAIL_VERIFICATION = '[AUth] EMAIL_VERIFICATION';
 
