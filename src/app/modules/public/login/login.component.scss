@@ -1,0 +1,39 @@
+.company .box {
+  background-color: white;
+  border: 2px solid white;
+  height: 50px;
+  padding: 8px 10px 10px 10px;
+}
+
+.company img {
+  width: 60px;
+}
+
+.company .company_name {
+  font-size: 18px;
+  color: #248f8f;
+  font-family: CaviarDreams Bold;
+  margin-top: -50%;
+  overflow: hidden;
+}
+
+.custom-control-input, .custom-control-label {
+  background-color: white;
+  color: white;
+  border: #248f8f;
+}
+
+label::after {
+  border: 1px solid #248f8f;
+  box-shadow: none !important;
+  outline: none !important;
+  color: white !important;
+}
+
+label::before {
+  color: white !important;
+  box-shadow: none !important;
+  outline: none !important;
+  background-color: #248f8f !important;
+}
+

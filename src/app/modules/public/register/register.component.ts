@@ -6,6 +6,7 @@ import * as AuthActions from '../../../_store/_actions/auth.actions';
 import { PlaceholderDirective } from '../../../directives/placeholder.directive';
 import { AlertComponent } from '../../../components/alert/alert.component';
 import { Subscription } from 'rxjs';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-register',
@@ -44,7 +45,8 @@ export class RegisterComponent implements OnInit {
       const company_full_name = this.formData.value.company_full_name;
       const password = this.formData.value.password;
 
-      this.store$.dispatch(new AuthActions.RegisterStart({ full_name, email, company_full_name, password }));
+      const user: User = { full_name, email, company_full_name, password };
+      this.store$.dispatch(new AuthActions.RegisterStart({user}));
     }
   }
 
@@ -65,7 +67,6 @@ export class RegisterComponent implements OnInit {
       AlertComponent
     );
 
-    console.log(this.alertHost);
     const hostViewContainerRef = this.alertHost.viewContainerRef;
     hostViewContainerRef.clear();
 

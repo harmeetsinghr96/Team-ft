@@ -1,15 +1,15 @@
 import { Action } from '@ngrx/store';
 
 import * as types from './types';
+import { User } from 'src/app/models/user.model';
 
 export class Register implements Action {
   readonly type = types.REGISTER;
-  constructor(public payload: { id: string, token: string }) {}
 }
 
 export class RegisterStart implements Action {
   readonly type = types.REGISTER_START;
-  constructor(public payload: { full_name: string, email: string, company_full_name: string, password: string }) {}
+  constructor(public payload: { user: User }) {}
 }
 
 export class RegisterFailed implements Action {
@@ -19,7 +19,7 @@ export class RegisterFailed implements Action {
 
 export class Login implements Action {
   readonly type = types.LOGIN;
-  constructor(public payload: { user: object, token: string }) {}
+  constructor(public payload: { user: User, token: string }) {}
 }
 
 export class Logout implements Action {
@@ -28,7 +28,7 @@ export class Logout implements Action {
 
 export class LoginStart implements Action {
   readonly type = types.LOGIN_START;
-  constructor(public payload: { email: string, password: string }) {}
+  constructor(public payload: { user: User }) {}
 }
 
 export class LoginFailed implements Action {

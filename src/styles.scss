@@ -82,9 +82,17 @@ $font-weight-500: 500;
 #form .heading-text h5 {
   text-align: center;
   color: $image-bg;
-  padding-bottom: 18px;
+  padding-bottom: 8px;
   font-size: 24px;
   font-family: $font-family-caavier-bold;
+}
+
+#form .heading-text p {
+  font-size: 18px;
+  text-align: center;
+  font-family: $font-family-caavier;
+  color: $image-bg;
+  padding-bottom: 18px;
 }
 
 #form form input {
@@ -100,6 +108,11 @@ $font-weight-500: 500;
 #form form input::placeholder {
   font-size: $input-font-size;
   color: $input-color;
+}
+
+#form form input:disabled {
+  cursor: not-allowed;
+  background-color: #faf5f5;
 }
 
 #form form input:focus {
