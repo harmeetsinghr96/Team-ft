@@ -15,18 +15,21 @@ import CombinedReducer from './_store/store.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffets } from './_store/_effects/auth.effext';
 
+import { RequestInterceptorService } from './_constant/interceptors/interceptor.service';
+
 import { LayoutModule } from './layout/layout.module';
 import { SharedModule } from './shared/shared.module';
-import { ApiService } from './services/api.service';
-import { LoaderService } from './_constant/loader.service';
-import { RequestInterceptorService } from './_constant/interceptor.service';
+import { PublicModule } from './modules/public/public.module';
+import { PrivateModule } from './modules/private/private.module';
+
+import { ApiService } from './services/API/auth.service';
+import { LoaderService } from './services/shared/loader.service';
+import { AlertService } from './services/shared/alert.service';
 
 import { LoaderComponent } from './components/loader/loader.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AlertComponent } from './components/alert/alert.component';
-import { PublicModule } from './modules/public/public.module';
-import { PrivateModule } from './modules/private/private.module';
 
 @NgModule({
   declarations: [
@@ -51,6 +54,7 @@ import { PrivateModule } from './modules/private/private.module';
   ],
   providers: [
     ApiService,
+    AlertService,
     LoaderService,
     { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptorService, multi: true }
   ],

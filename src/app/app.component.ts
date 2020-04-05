@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
-import { LoaderService } from './_constant/loader.service';
+import { LoaderService } from './services/shared/loader.service';
 
 @Component({
   selector: 'app-root',

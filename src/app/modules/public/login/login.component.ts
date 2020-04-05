@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ComponentFactoryResolver, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import * as state from '../../../_store/store.reducer';
@@ -6,8 +6,7 @@ import * as AuthActions from '../../../_store/_actions/auth.actions';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { PlaceholderDirective } from 'src/app/directives/placeholder.directive';
-import { Subscription } from 'rxjs';
-import { AlertComponent } from 'src/app/components/alert/alert.component';
+import { AlertService } from '../../../services/shared/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -22,13 +21,12 @@ export class LoginComponent implements OnInit {
   public comapny: Array<any>;
   protected token: string;
 
-  private closeSub: Subscription;
   @ViewChild(PlaceholderDirective, { static: false }) alertHost: PlaceholderDirective;
   @ViewChild('myForm', { static: true }) form: ElementRef;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver,
-              private store: Store<state.AppState>,
-              private router: Router) { }
+  constructor(private store: Store<state.AppState>,
+              private router: Router,
+              private alertService: AlertService) { }
 
   ngOnInit() {
     this.store.select('auth').subscribe(authState => {
@@ -36,7 +34,7 @@ export class LoginComponent implements OnInit {
       this.user = authState.user;
       this.token = authState.token;
       if (this.error) {
-        this.showErrorAlert(this.error);
+        this.alertService.showErrorAlert(this.alertHost, this.error);
       }
 
       if (this.user) {
@@ -99,21 +97,6 @@ export class LoginComponent implements OnInit {
     this.formData = new FormGroup({
       email: new FormControl(null, Validators.compose([Validators.required, Validators.pattern(emailExp)])),
       password: new FormControl(null, Validators.compose([Validators.required, Validators.pattern(passwordExp)])),
-    });
-  }
-
-  private showErrorAlert(message: string) {
-    const alertCmpFactory = this.componentFactoryResolver.resolveComponentFactory(AlertComponent);
-
-    const hostViewContainerRef = this.alertHost.viewContainerRef;
-    hostViewContainerRef.clear();
-
-    const componentRef = hostViewContainerRef.createComponent(alertCmpFactory);
-
-    componentRef.instance.message = message;
-    this.closeSub = componentRef.instance.closeBtn.subscribe(() => {
-      this.closeSub.unsubscribe();
-      hostViewContainerRef.clear();
     });
   }
 
