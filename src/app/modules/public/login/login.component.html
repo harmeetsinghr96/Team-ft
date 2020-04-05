@@ -4,12 +4,12 @@
   <div class="row justify-content-center">
     <div class="col-sm-12 heading-text">
       <h5> Login </h5>
-      <p *ngIf="this.comapny">Select your company</p>
+      <p *ngIf="this.comapny">Select a company</p>
     </div>
 
     <form [formGroup]="formData" role="form" name="formData" novalidate="" (ngSubmit)="login($event, formData.value)" class="col-sm-12" #myForm>
 
-      <div class="form-group">
+      <div class="form-group" *ngIf="!this.comapny">
 
         <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" autocomplete="off" formControlName="email">
 
@@ -19,7 +19,7 @@
 
       </div>
 
-      <div class="form-group">
+      <div class="form-group" *ngIf="!this.comapny">
 
         <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" autocomplete="off" formControlName="password" [formControl]="formData.get('password')">
 
@@ -35,7 +35,7 @@
           <div class="col-sm-12 company">
             <div class="box" *ngFor="let company of this.comapny">
               <div class="media">
-                <img [src]="company.avatar === null ? 'this.comapny.avatar' : '../../../../assets/img/logo.png'" class="img-fluid" [alt]="'this.comapny.comapny_full_name'">
+                <img [src]="company.avatar === null ? 'this.comapny.avatar' : '../../../../assets/img/company.jpg'" class="img-fluid" [alt]="'this.comapny.comapny_full_name'">
                 <div class="media-body">
                   <h5 class="mt-1 ml-2 company_name"> {{ company.company_full_name }} </h5>
                 </div>

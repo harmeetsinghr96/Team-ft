@@ -53,5 +53,15 @@ export class ForgotFailed implements Action {
   constructor(public payload: string) {}
 }
 
-export type AuthActions = Register | RegisterStart | RegisterFailed | Login | LoginStart | LoginFailed | Logout;
+export type AuthActions =
+  Register |
+  RegisterStart |
+  RegisterFailed |
+  Login |
+  LoginStart |
+  LoginFailed |
+  Logout |
+  ForgotStart |
+  Forgot |
+  ForgotFailed;
 

@@ -1,6 +1,9 @@
 .company {
   overflow: auto;
-  height: 170px;
+  height: 250px;
+  padding: 12px 12px;
+  border-radius: 5px;
+  background-color: #248f8f;
   -ms-overflow-style: none;
 }
 
@@ -9,21 +12,28 @@
 }
 
 .company .box {
+  padding-top: 10px;
   background-color: white;
   border: 2px solid white;
   height: 50px;
-  padding: 8px 10px 10px 10px;
+  padding: 8px 10px 12px 10px;
 }
 
 .company img {
-  width: 60px;
+  width: 50px;
+  padding-bottom: 2px;
+  border-radius: 50%;
+  border: 1px solid white;
+  object-fit: fill;
+  text-align: center;
+  object-position: center;
 }
 
 .company .company_name {
-  font-size: 18px;
+  font-size: 16px;
   color: #248f8f;
+  padding-top: 4px;
   font-family: CaviarDreams Bold;
-  margin-top: -50%;
   overflow: hidden;
 }
 
