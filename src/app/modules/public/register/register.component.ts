@@ -1,12 +1,11 @@
-import { Component, OnInit, ViewChild, ComponentFactoryResolver } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/_store/store.reducer';
 import * as AuthActions from '../../../_store/_actions/auth.actions';
 import { PlaceholderDirective } from '../../../directives/placeholder.directive';
-import { AlertComponent } from '../../../components/alert/alert.component';
-import { Subscription } from 'rxjs';
 import { User } from 'src/app/models/user.model';
+import { AlertService } from 'src/app/services/shared/alert.service';
 
 @Component({
   selector: 'app-register',
@@ -16,17 +15,15 @@ import { User } from 'src/app/models/user.model';
 export class RegisterComponent implements OnInit {
   public formData: FormGroup;
   public error: string;
-  private closeSub: Subscription;
   @ViewChild(PlaceholderDirective, { static: false }) alertHost: PlaceholderDirective;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver,
-              private store$: Store<AppState>) { }
+  constructor(private store$: Store<AppState>, private alertService: AlertService) { }
 
   ngOnInit(): void {
     this.store$.select('auth').subscribe(authState => {
       this.error = authState.error;
       if (this.error) {
-        this.showErrorAlert(this.error);
+        this.alertService.showErrorAlert(this.alertHost, this.error);
       }
     });
     this.initForm();
@@ -62,20 +59,4 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  private showErrorAlert(message: string) {
-    const alertCmpFactory = this.componentFactoryResolver.resolveComponentFactory(
-      AlertComponent
-    );
-
-    const hostViewContainerRef = this.alertHost.viewContainerRef;
-    hostViewContainerRef.clear();
-
-    const componentRef = hostViewContainerRef.createComponent(alertCmpFactory);
-
-    componentRef.instance.message = message;
-    this.closeSub = componentRef.instance.closeBtn.subscribe(() => {
-      this.closeSub.unsubscribe();
-      hostViewContainerRef.clear();
-    });
-  }
 }

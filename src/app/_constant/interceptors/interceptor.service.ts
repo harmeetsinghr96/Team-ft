@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 import { tap } from 'rxjs/operators';
-import { LoaderService } from './loader.service';
+import { LoaderService } from '../../services/shared/loader.service';
 
 @Injectable()
 export class RequestInterceptorService implements HttpInterceptor {
