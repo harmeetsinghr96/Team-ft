@@ -15,14 +15,17 @@ import { AlertService } from 'src/app/services/shared/alert.service';
 export class RegisterComponent implements OnInit {
   public formData: FormGroup;
   public error: string;
-  @ViewChild(PlaceholderDirective, { static: false }) alertHost: PlaceholderDirective;
+  @ViewChild(PlaceholderDirective, { static: false}) alertHost: PlaceholderDirective;
 
   constructor(private store$: Store<AppState>, private alertService: AlertService) { }
 
   ngOnInit(): void {
     this.store$.select('auth').subscribe(authState => {
       this.error = authState.error;
-      if (this.error) {
+      if (this.error === 'Link expired..!!') {
+        this.error = null;
+      } else if (this.error) {
+        console.log(this.error);
         this.alertService.showErrorAlert(this.alertHost, this.error);
       }
     });

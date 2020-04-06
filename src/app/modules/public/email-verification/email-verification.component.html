@@ -1,1 +1,13 @@
-<p>email-verification works!</p>
+<ng-template appPlaceholder></ng-template>
+
+<section id="registerd">
+  <div class="row justify-content-center" *ngIf="this.user && this.token">
+    <div class="col-sm-12">
+      <h3>Verified Successfully.!!</h3>
+
+      <p>Thank you.!!</p>
+
+      <p>Taking you to Dashboard.!!</p>
+    </div>
+  </div>
+</section>

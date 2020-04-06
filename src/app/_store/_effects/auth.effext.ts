@@ -27,9 +27,9 @@ export class AuthEffets {
       const company_id = authData.payload.user.company_id;
 
       if (email && password && company_id) {
-        user = {email, password, company_id};
+        user = { email, password, company_id };
       } else {
-        user = {email, password};
+        user = { email, password };
       }
 
       return this.apiService.login(user).pipe(
@@ -97,7 +97,7 @@ export class AuthEffets {
       };
 
       return this.apiService.forgot(user).pipe(
-        map((res: any) => {
+        map((res) => {
           return new AuthActions.Forgot();
         }),
         catchError((errorRes: any) => {
@@ -116,11 +116,85 @@ export class AuthEffets {
     })
   );
 
+  @Effect()
+  RecoveryPassword = this.actions$.pipe(
+    ofType(types.RECOVERY_START),
+
+    switchMap((authData: AuthActions.RecoveryStart) => {
+
+      const user: User = {
+        token: authData.payload.user.token,
+        id: authData.payload.user.id,
+        password: authData.payload.user.password
+      };
+
+      return this.apiService.passwordRecovery(user).pipe(
+        map((res: any) => {
+          return new AuthActions.Recovery();
+        }),
+        catchError((errorRes: any) => {
+          let errorMessage = 'An unknown error occurred!';
+          if (!errorRes.error || !errorRes.error.message) {
+            return of(new AuthActions.RecoveryFailed(errorMessage));
+          }
+
+          if (errorRes.error.message) {
+            errorMessage = errorRes.error.message;
+            return of(new AuthActions.RecoveryFailed(errorMessage));
+          }
+
+          return of(new AuthActions.RecoveryFailed(errorMessage));
+        })
+      );
+    })
+  );
+
+  @Effect()
+  Verification = this.actions$.pipe(
+    ofType(types.EMAIL_VERIFICATION_START),
+
+    switchMap((authData: AuthActions.VerificationStart) => {
+
+      const user: User = {
+        token: authData.payload.user.token,
+        id: authData.payload.user.id
+      };
+
+      return this.apiService.verification(user).pipe(
+        map((res: any) => {
+          console.log(res);
+          return new AuthActions.Verification({ user: res.data.user, token: res.data.token });
+        }),
+        catchError((errorRes: any) => {
+          let errorMessage = 'An unknown error occurred!';
+          if (!errorRes.error || !errorRes.error.message) {
+            return of(new AuthActions.VerificationFailed(errorMessage));
+          }
+
+          if (errorRes.error.message) {
+            errorMessage = errorRes.error.message;
+            return of(new AuthActions.VerificationFailed(errorMessage));
+          }
+
+          return of(new AuthActions.VerificationFailed(errorMessage));
+        })
+      );
+    })
+  );
+
   @Effect({ dispatch: false })
   authSuccess = this.actions$.pipe(
     ofType(types.REGISTER),
     tap(() => {
       this.router.navigate(['/registered']);
+    })
+  );
+
+  @Effect({ dispatch: false })
+  emailSent = this.actions$.pipe(
+    ofType(types.FORGOT),
+    tap(() => {
+      this.router.navigate(['/email-sent']);
     })
   );
 

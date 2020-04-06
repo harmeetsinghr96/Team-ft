@@ -24,5 +24,19 @@ export class ApiService {
     return this.http.post<AuthResponse>('user/forgot_password', data);
   }
 
+  public verification(data) {
+    const token = { token: data.token };
+    return this.http.put<AuthResponse>(`user/verified/${data.id}`, token);
+  }
+
+  public passwordRecovery(data) {
+    const recoveryData = {
+      token: data.token,
+      password: data.password
+    };
+
+    return this.http.put<AuthResponse>(`user/password_reset/${data.id}`, recoveryData);
+  }
+
 }
 
