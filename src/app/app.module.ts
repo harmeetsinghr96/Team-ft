@@ -50,7 +50,7 @@ import { AlertComponent } from './components/alert/alert.component';
     LayoutModule,
     SharedModule,
     PublicModule,
-    PrivateModule
+    PrivateModule,
   ],
   providers: [
     ApiService,

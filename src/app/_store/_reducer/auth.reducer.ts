@@ -25,7 +25,9 @@ export const AuthReducer = (state = initState, action: authActions.AuthActions) 
       return { ...state, loading: true, user: null, token: null, error: null };
 
     case types.LOGIN:
-      return { ...state, loading: false, user: action.payload.user, token: action.payload.token, error: null };
+      const loginState = { ...state, loading: false, user: action.payload.user, token: action.payload.token, error: null };
+      StoreState(loginState);
+      return loginState;
 
     case types.LOGIN_FAILED:
       return { ...state, loading: false, user: null, token: null, error: action.payload };
@@ -52,7 +54,9 @@ export const AuthReducer = (state = initState, action: authActions.AuthActions) 
       return { ...state, loading: true, user: null, token: null, error: null };
 
       case types.EMAIL_VERIFICATION:
-        return { ...state, loading: false, user: action.payload.user, token: action.payload.token, error: null };
+        const verificationState = { ...state, loading: false, user: action.payload.user, token: action.payload.token, error: null };
+        StoreState(verificationState);
+        return verificationState;
 
       case types.EMAIL_VERIFICATION_FAILED:
         return { ...state, loading: false, user: null, token: null, error: action.payload };
@@ -67,7 +71,12 @@ export const AuthReducer = (state = initState, action: authActions.AuthActions) 
         return { ...state, loading: false, user: null, token: null, error: action.payload };
 
       default:
-        return state;
+        const oldState = JSON.parse(localStorage.getItem('_state'));
+        return oldState ? oldState : state;
   }
 };
+
+function StoreState(state) {
+  localStorage.setItem('_state', JSON.stringify(state));
+}
 

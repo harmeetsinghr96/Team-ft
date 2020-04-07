@@ -49,9 +49,6 @@ export class EmailVerificationComponent implements OnInit, AfterViewInit {
       }
 
       if (this.user && this.token) {
-        localStorage.setItem('user', JSON.stringify(this.user));
-        localStorage.setItem('token', this.token);
-
         setTimeout(() => {
           this.router.navigateByUrl('/dashboard');
         }, 2000);

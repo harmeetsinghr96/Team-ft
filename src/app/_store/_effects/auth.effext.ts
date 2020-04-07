@@ -197,5 +197,4 @@ export class AuthEffets {
       this.router.navigate(['/email-sent']);
     })
   );
-
 }

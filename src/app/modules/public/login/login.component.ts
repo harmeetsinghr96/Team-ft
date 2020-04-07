@@ -37,10 +37,16 @@ export class LoginComponent implements OnInit {
         this.alertService.showErrorAlert(this.alertHost, this.error);
       }
 
+
+      if (this.user && this.token) {
+        this.router.navigateByUrl('/dashboard');
+      }
+
+
       if (this.user) {
         this.comapny = this.user.company;
 
-        if (this.comapny.length > 0) {
+        if (this.comapny ) {
           const inputs: Array<any> = this.form.nativeElement.elements;
           const email: HTMLInputElement = inputs[0];
           const password: HTMLInputElement = inputs[1];
@@ -49,13 +55,8 @@ export class LoginComponent implements OnInit {
           password.setAttribute('disabled', 'true');
         }
       }
-
-      if (this.user && this.token) {
-        localStorage.setItem('user', JSON.stringify(this.user));
-        localStorage.setItem('token', this.token);
-        this.router.navigateByUrl('/dashboard');
-      }
     });
+
     this.initForm();
   }
 
