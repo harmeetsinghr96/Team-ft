@@ -1,17 +1,65 @@
-.sidenav-container {
+@import '../../../styles.scss';
+
+#sidenav {
   height: 100%;
+  .sidenav {
+    width: 200px;
+    background: $backgroundContainers;
+    .mat-toolbar {
+      position: sticky;
+      color: $image-bg;
+      text-align: center;
+      width: 100%;
+      font-size: 22px;
+      font-family: $font-family-caavier-bold;
+      background: $backgroundContainers;
+      top: 0;
+      z-index: 1;
+
+      img {
+        width: 45px;
+        margin-right: 3.5px;
+        object-fit: inherit;
+        margin-top: 12px;
+      }
+    }
+    .mat-nav-list a {
+      color: $image-bg;
+      font-family: $font-family-caavier;
+      font-weight: bolder !important;
+      font-size: 14px;
+      text-align: center;
+      transition: 0.7s;
+
+      .mat-icon {
+        margin-right: 3px;
+        font-size: 20px;
+      }
+
+      &:focus {
+        outline:  none;
+        box-shadow: none;
+      }
+
+      &:hover {
+        background-color: $image-bg;
+        color: $backgroundContainers;
+      }
+    }
+  }
+
+  .mat-toolber-container {
+    background: $backgroundContainers;
+
+    .toogle_button {
+      color: $image-bg;
+
+      &:focus {
+        outline: none;
+        box-shadow: none;
+      }
+    }
+  }
 }
 
-.sidenav {
-  width: 200px;
-}
 
-.sidenav .mat-toolbar {
-  background: inherit;
-}
-
-.mat-toolbar.mat-primary {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
