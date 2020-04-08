@@ -1,0 +1,22 @@
+@import '../../../../../styles.scss';
+
+#task-list {
+  .accordian {
+    background-color: $backgroundContainers;
+    border: 5px solid $backgroundContainers;
+    padding: 3px 0px;
+
+    mat-panel-title, mat-panel-description {
+      color: $image-bg;
+      font-size: 16px;
+      font-family: $font-family-caavier-bold;
+
+    }
+
+  }
+}
+
+::ng-deep .arrow-expansion > .mat-expansion-indicator:after {
+  color: $image-bg;
+}
+

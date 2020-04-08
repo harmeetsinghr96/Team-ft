@@ -26,7 +26,9 @@ export const AuthReducer = (state = initState, action: authActions.AuthActions) 
 
     case types.LOGIN:
       const loginState = { ...state, loading: false, user: action.payload.user, token: action.payload.token, error: null };
-      StoreState(loginState);
+      if (loginState.user && loginState.token) {
+        StoreState(loginState);
+      }
       return loginState;
 
     case types.LOGIN_FAILED:

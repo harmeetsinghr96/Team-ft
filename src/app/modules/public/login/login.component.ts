@@ -44,15 +44,17 @@ export class LoginComponent implements OnInit {
 
 
       if (this.user) {
-        this.comapny = this.user.company;
+        if (Array.isArray(this.user.company)) {
+          this.comapny = this.user.company;
 
-        if (this.comapny ) {
-          const inputs: Array<any> = this.form.nativeElement.elements;
-          const email: HTMLInputElement = inputs[0];
-          const password: HTMLInputElement = inputs[1];
+          if (Array.isArray(this.comapny)) {
+            const inputs: Array<any> = this.form.nativeElement.elements;
+            const email: HTMLInputElement = inputs[0];
+            const password: HTMLInputElement = inputs[1];
 
-          email.setAttribute('disabled', 'true');
-          password.setAttribute('disabled', 'true');
+            email.setAttribute('disabled', 'true');
+            password.setAttribute('disabled', 'true');
+          }
         }
       }
     });

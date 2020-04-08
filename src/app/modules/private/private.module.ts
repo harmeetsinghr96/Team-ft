@@ -10,7 +10,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     PrivateRoutingModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class PrivateModule { }
