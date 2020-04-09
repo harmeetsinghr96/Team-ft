@@ -319,3 +319,44 @@ $buttonTextHover: #fdfdfd;
 }
 
 // spinner end
+
+
+//p paginator
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: transparent;
+}
+
+::ng-deep .mat-select-value {
+ color: $headerBg!important;
+ font-weight: bolder !important;
+ font-family: $font-family-caavier-bold;
+}
+
+::ng-deep .mat-paginator-icon {
+ color: $headerBg !important;
+ outline: none;
+ border: none;
+ box-shadow: none;
+}
+
+::ng-deep .mat-focus-indicator:focus {
+ outline: none;
+ box-shadow: none;
+ border-radius: none;
+}
+
+::ng-deep .mat-option{
+ background: $headerBg !important;
+}
+
+::ng-deep .mat-paginator-page-size-label, ::ng-deep .mat-paginator-range-label {
+ font-family: $font-family-caavier-bold;
+ color: $headerBg;
+ font-weight: bolder !important;
+}
+
+::ng-deep .mat-option-text {
+ color: white;
+ font-family: $font-family-caavier-bold;
+}

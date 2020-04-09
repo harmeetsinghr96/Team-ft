@@ -14,6 +14,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatInputModule } from '@angular/material/input';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [],
@@ -33,7 +36,10 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     NgbDropdownModule,
     MatFormFieldModule,
     MatExpansionModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatInputModule,
+    DragDropModule,
+    MatPaginatorModule
   ],
   exports: [
     ReactiveFormsModule,
@@ -50,7 +56,10 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     NgbDropdownModule,
     MatFormFieldModule,
     MatExpansionModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatInputModule,
+    DragDropModule,
+    MatPaginatorModule
   ]
 })
 

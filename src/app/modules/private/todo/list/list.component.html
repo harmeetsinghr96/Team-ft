@@ -1,185 +1,54 @@
 <section id="task-list" class="col-sm-12">
   <div class="row">
-    <mat-accordion class="w-100 text-white">
-      <mat-expansion-panel class="accordian">
-        <mat-expansion-panel-header class="arrow-expansion">
-          <mat-panel-title>
-            Move icon
-          </mat-panel-title>
-          <mat-panel-title>
-            task list date and serial no
-          </mat-panel-title>
-          <mat-panel-description>
-            Task list name
-          </mat-panel-description>
-          <mat-panel-description>
-            task list date and serial no
-          </mat-panel-description>
-        </mat-expansion-panel-header>
+    <h3 class="h3">List of Todo & Tasks</h3>
 
-        <section class="pend-done">
-          <div class="row">
-            <div class="col-sm-6">
-              <h1>Pending</h1>
-            </div>
+    <div cdkDropList class="example-list w-100" (cdkDropListDropped)="drop($event)">
 
-            <div class="col-sm-6">
-              <h1>Done</h1>
-            </div>
+      <form action="" class="row">
+        <div class="form-group col-sm-12">
+          <div class="w-100">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>New Todo</mat-label>
+              <input matInput placeholder="Write to add new toto in the list..." class="pr-2">
+              <mat-icon class="input-icon" matSuffix>note_add</mat-icon>
+            </mat-form-field>
           </div>
-        </section>
-      </mat-expansion-panel>
-    </mat-accordion>
+        </div>
+      </form>
 
-    <mat-accordion class="w-100 text-white">
-      <mat-expansion-panel class="accordian">
-        <mat-expansion-panel-header class="arrow-expansion">
-          <mat-panel-title>
-            Move icon
-          </mat-panel-title>
-          <mat-panel-title>
-            task list date and serial no
-          </mat-panel-title>
-          <mat-panel-description>
-            Task list name
-          </mat-panel-description>
-          <mat-panel-description>
-            task list date and serial no
-          </mat-panel-description>
-        </mat-expansion-panel-header>
+      <div style="margin-top: -15px;">
+        <div class="example-box" *ngFor="let movie of movies" cdkDrag>
+          <mat-accordion class="w-100">
+            <mat-expansion-panel class="accordian">
+              <mat-expansion-panel-header class="arrow-expansion">
+                <mat-panel-title>
+                  <mat-icon class="drag-icon">drag_indicator</mat-icon>
+                </mat-panel-title>
+                <mat-panel-title>
+                  {{ movie.title }}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
 
-        <section class="pend-done">
-          <div class="row">
-            <div class="col-sm-6">
-              <h1>Pending</h1>
-            </div>
+              <section class="pend-done">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <h1>Pending</h1>
+                  </div>
 
-            <div class="col-sm-6">
-              <h1>Done</h1>
-            </div>
-          </div>
-        </section>
-      </mat-expansion-panel>
-    </mat-accordion>
-    <mat-accordion class="w-100 text-white">
-      <mat-expansion-panel class="accordian">
-        <mat-expansion-panel-header class="arrow-expansion">
-          <mat-panel-title>
-            Move icon
-          </mat-panel-title>
-          <mat-panel-title>
-            task list date and serial no
-          </mat-panel-title>
-          <mat-panel-description>
-            Task list name
-          </mat-panel-description>
-          <mat-panel-description>
-            task list date and serial no
-          </mat-panel-description>
-        </mat-expansion-panel-header>
+                  <div class="col-sm-6">
+                    <h1>Done</h1>
+                  </div>
+                </div>
+              </section>
 
-        <section class="pend-done">
-          <div class="row">
-            <div class="col-sm-6">
-              <h1>Pending</h1>
-            </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </div>
 
-            <div class="col-sm-6">
-              <h1>Done</h1>
-            </div>
-          </div>
-        </section>
-      </mat-expansion-panel>
-    </mat-accordion>
-    <mat-accordion class="w-100 text-white">
-      <mat-expansion-panel class="accordian">
-        <mat-expansion-panel-header class="arrow-expansion">
-          <mat-panel-title>
-            Move icon
-          </mat-panel-title>
-          <mat-panel-title>
-            task list date and serial no
-          </mat-panel-title>
-          <mat-panel-description>
-            Task list name
-          </mat-panel-description>
-          <mat-panel-description>
-            task list date and serial no
-          </mat-panel-description>
-        </mat-expansion-panel-header>
 
-        <section class="pend-done">
-          <div class="row">
-            <div class="col-sm-6">
-              <h1>Pending</h1>
-            </div>
-
-            <div class="col-sm-6">
-              <h1>Done</h1>
-            </div>
-          </div>
-        </section>
-      </mat-expansion-panel>
-    </mat-accordion>
-    <mat-accordion class="w-100 text-white">
-      <mat-expansion-panel class="accordian">
-        <mat-expansion-panel-header class="arrow-expansion">
-          <mat-panel-title>
-            Move icon
-          </mat-panel-title>
-          <mat-panel-title>
-            task list date and serial no
-          </mat-panel-title>
-          <mat-panel-description>
-            Task list name
-          </mat-panel-description>
-          <mat-panel-description>
-            task list date and serial no
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-
-        <section class="pend-done">
-          <div class="row">
-            <div class="col-sm-6">
-              <h1>Pending</h1>
-            </div>
-
-            <div class="col-sm-6">
-              <h1>Done</h1>
-            </div>
-          </div>
-        </section>
-      </mat-expansion-panel>
-    </mat-accordion>
-    <mat-accordion class="w-100 text-white">
-      <mat-expansion-panel class="accordian">
-        <mat-expansion-panel-header class="arrow-expansion">
-          <mat-panel-title>
-            Move icon
-          </mat-panel-title>
-          <mat-panel-title>
-            task list date and serial no
-          </mat-panel-title>
-          <mat-panel-description>
-            Task list name
-          </mat-panel-description>
-          <mat-panel-description>
-            task list date and serial no
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-
-        <section class="pend-done">
-          <div class="row">
-            <div class="col-sm-6">
-              <h1>Pending</h1>
-            </div>
-
-            <div class="col-sm-6">
-              <h1>Done</h1>
-            </div>
-          </div>
-        </section>
-      </mat-expansion-panel>
-    </mat-accordion>
+      <mat-paginator class="mt-4" [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
+    </div>
   </div>
 </section>
