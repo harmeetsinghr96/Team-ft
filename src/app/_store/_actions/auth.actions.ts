@@ -53,6 +53,37 @@ export class ForgotFailed implements Action {
   constructor(public payload: string) {}
 }
 
+// FORGOT ACTIONS STRT
+export class VerificationStart implements Action {
+  readonly type = types.EMAIL_VERIFICATION_START;
+  constructor(public payload: { user: User }) {}
+}
+
+export class Verification implements Action {
+  readonly type = types.EMAIL_VERIFICATION;
+  constructor(public payload: { user: User, token: string }) {}
+}
+
+export class VerificationFailed implements Action {
+  readonly type = types.EMAIL_VERIFICATION_FAILED;
+  constructor(public payload: string) {}
+}
+
+export class RecoveryStart implements Action {
+  readonly type = types.RECOVERY_START;
+  constructor(public payload: { user: User }) {}
+}
+
+export class Recovery implements Action {
+  readonly type = types.RECOVERY;
+}
+
+export class RecoveryFailed implements Action {
+  readonly type = types.RECOVERY_FAILED;
+  constructor(public payload: string) {}
+}
+
+
 export type AuthActions =
   Register |
   RegisterStart |
@@ -63,5 +94,11 @@ export type AuthActions =
   Logout |
   ForgotStart |
   Forgot |
-  ForgotFailed;
+  ForgotFailed |
+  VerificationStart |
+  Verification |
+  VerificationFailed |
+  RecoveryStart |
+  Recovery |
+  RecoveryFailed;
 

@@ -1,5 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import * as state from 'src/app/_store/store.reducer';
+import { AlertService } from 'src/app/services/shared/alert.service';
+import { PlaceholderDirective } from 'src/app/directives/placeholder.directive';
+import * as AuthActions from '../../../_store/_actions/auth.actions';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-forgot-password',
@@ -8,20 +14,38 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class ForgotPasswordComponent implements OnInit {
   public formData: FormGroup;
+  public error: string;
 
-  constructor() { }
+  @ViewChild(PlaceholderDirective, { static: false }) alertHost: PlaceholderDirective;
 
-  ngOnInit(): void {
+  constructor(private store$: Store<state.AppState>, private alertService: AlertService) { }
+
+  ngOnInit() {
+    this.store$.select('auth').subscribe(appState => {
+      this.error = appState.error;
+
+      if (this.error) {
+        this.alertService.showErrorAlert(this.alertHost, this.error);
+      }
+    });
+
     this.initForm();
   }
 
   forgot($ev, values) {
-    console.log(values);
     $ev.preventDefault();
 
     // tslint:disable-next-line: forin
     for (const control in this.formData.controls) {
       this.formData.controls[control].markAsTouched();
+    }
+
+    if (this.formData.valid) {
+      const user: User = {
+        email: this.formData.value.email
+      };
+
+      this.store$.dispatch(new AuthActions.ForgotStart({user}));
     }
   }
 

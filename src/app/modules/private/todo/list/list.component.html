@@ -1,0 +1,54 @@
+<section id="task-list" class="col-sm-12">
+  <div class="row">
+    <h3 class="h3">List of Todo & Tasks</h3>
+
+    <div cdkDropList class="example-list w-100" (cdkDropListDropped)="drop($event)">
+
+      <form action="" class="row">
+        <div class="form-group col-sm-12">
+          <div class="w-100">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>New Todo</mat-label>
+              <input matInput placeholder="Write to add new toto in the list..." class="pr-2">
+              <mat-icon class="input-icon" matSuffix>note_add</mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+
+      <div style="margin-top: -15px;">
+        <div class="example-box" *ngFor="let movie of movies" cdkDrag>
+          <mat-accordion class="w-100">
+            <mat-expansion-panel class="accordian">
+              <mat-expansion-panel-header class="arrow-expansion">
+                <mat-panel-title>
+                  <mat-icon class="drag-icon">drag_indicator</mat-icon>
+                </mat-panel-title>
+                <mat-panel-title>
+                  {{ movie.title }}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <section class="pend-done">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <h1>Pending</h1>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <h1>Done</h1>
+                  </div>
+                </div>
+              </section>
+
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </div>
+
+
+      <mat-paginator class="mt-4" [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,150 @@
+@import '../../../styles.scss';
+
+#sidenav {
+  height: 100%;
+  .sidenav {
+    width: 210px;
+    background: $headerBg;
+    .mat-toolbar {
+      position: sticky;
+      color: white;
+      text-align: center;
+      width: 100%;
+      font-size: 22px;
+      font-family: $font-family-caavier-bold;
+      background: $headerBg;
+      top: 0;
+      z-index: 1;
+
+      img {
+        width: 45px;
+        margin-right: 3.5px;
+        object-fit: inherit;
+        margin-top: 12px;
+      }
+    }
+    .mat-nav-list a {
+      color: white;
+      font-family: $font-family-caavier;
+      font-weight: bolder !important;
+      font-size: 14px;
+      text-align: center;
+      transition: 0.7s;
+
+      .mat-icon {
+        margin-right: 3px;
+        font-size: 20px;
+      }
+
+      &:focus {
+        outline:  none;
+        box-shadow: none;
+      }
+
+      &:hover {
+        background-color: white;
+        color: $headerBg;
+      }
+    }
+  }
+
+  .mat-toolber-container {
+    background: $headerBg;
+
+    .toogle_button {
+      color: white;
+
+      &:focus {
+        outline: none;
+        box-shadow: none;
+      }
+    }
+
+    .col-box {
+      padding: 0px 5px;
+
+      .bell-icon {
+        color: white;
+        outline: none;
+        border: none;
+        box-shadow: none;
+        font-size: 24px;
+
+        &:focus {
+          outline: none;
+          border: none;
+          box-shadow: none;
+        }
+      };
+    }
+    .dropdown-btn {
+      outline: none;
+      border: none;
+      font-family: $font-family-caavier;
+      font-weight: bold !important;
+      font-size: 14px;
+      background-color: $headerBg;
+      color: white;
+      text-align: center;
+
+        &:focus {
+          background-color: $headerBg;
+          outline: none;
+          border: none;
+          box-shadow: none;
+        }
+
+        img {
+          width: 40px;
+          margin-right: 8px;
+          border-radius: 100%;
+        }
+    }
+
+    .dp-box {
+      background: white;
+      min-width: 225px;
+
+      .list-btn {
+        color: $headerBg;
+        font-family: $font-family-caavier;
+        font-weight: bold !important;
+        font-size: 14px;
+        outline: none;
+        box-shadow: none;
+        border: none;
+        transition: 0.5s;
+
+        &:hover {
+          background-color: $headerBg;
+          color: white;
+        }
+
+        &:focus {
+          outline: none;
+          box-shadow: none;
+          border: none;
+        }
+      }
+
+      .profile-img-box {
+        height: 80px;
+        background-color: $headerBg;
+
+        .user-box {
+          z-index: 99999 !important;
+
+          img {
+            height: 80px;
+            width: 80px;
+            border-radius: 100%;
+            object-fit: center !important;
+            // margin-top: 50px;
+          }
+        }
+      }
+    }
+  }
+}
+
+

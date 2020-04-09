@@ -1,1 +1,82 @@
-<p>private works!</p>
+<mat-sidenav-container class="sidenav-container" id="sidenav">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar class="text-center">
+      Team
+    </mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['/']" routerLinkActive="router-link-active">
+        <mat-icon>supervisor_account</mat-icon> Members
+      </a>
+      <a mat-list-item [routerLink]="['/dashboard/todo']" routerLinkActive="router-link-active">
+        <mat-icon>assignment</mat-icon> Todo & Tasks
+     </a>
+      <a mat-list-item [routerLink]="['/routePath']" routerLinkActive="router-link-active">
+        <mat-icon>bookmark</mat-icon> Reminders
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="mat-toolber-container">
+      <button class="toogle_button" type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <section class="text-white w-100">
+        <div class="col-sm-12">
+          <div class="row d-flex justify-content-end">
+
+            <div class="col-box">
+              <div class="row">
+                <div class="col-sm-12 profile">
+                  <div ngbDropdown class="d-inline-block">
+                    <button mat-button class="btn dropdown-btn" id="dropdownBasic1" ngbDropdownToggle>
+                      <img src="../../../assets/img/user1.jpg" alt="user" class="img-fluid">
+                      <span class="mt-1">{{ company.company_full_name }}</span>
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dp-box">
+                      <button class="list-btn" ngbDropdownItem>Action - 1</button>
+                      <button class="list-btn" ngbDropdownItem>Action - 1</button>
+                      <button class="list-btn" ngbDropdownItem>Action - 1</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-box">
+              <div class="row">
+                <div class="col-sm-12 profile text-right">
+                  <div ngbDropdown class="d-inline-block">
+                    <button mat-button class="btn dropdown-btn" id="dropdownBasic1" ngbDropdownToggle>
+                      <img src="../../../assets/img/user1.jpg" alt="user" class="img-fluid">
+                      <span class="mt-1">Hi, {{ user.full_name }}</span>
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dp-box">
+                      <div class="profile-img-box">
+                        <div class="user-box">
+                          <span><img src="../../../assets/img/user1.jpg" alt=""></span>
+                          <span></span>
+                        </div>
+                      </div>
+
+                      <div class="mt-5 pt-2">
+                        <button class="list-btn" ngbDropdownItem>Profile</button>
+                        <button class="list-btn" ngbDropdownItem>Company</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </mat-toolbar>
+
+    <section class="col-sm-12 my-3">
+      <router-outlet></router-outlet>
+    </section>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

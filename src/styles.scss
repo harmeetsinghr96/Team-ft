@@ -49,8 +49,8 @@ $input-color: #005266;
 $button-color: #248f8f;
 $input-font-size: 14px;
 
-$input-height: 42px;
-$button-height: 45px;
+$input-height: 45px;
+$button-height: 48px;
 
 
 $font-family-caavier: CaviarDreams;
@@ -61,8 +61,39 @@ $font-weight-300: 300;
 $font-weight-400: 400;
 $font-weight-500: 500;
 
+
+$FooterBg: #022144;
+$FooterText:#ffffff;
+
+$headerBg: #147cb9;
+$headerText:#ffffff;
+$NavColor:#fff;
+$NavColorHover:#0071b3;
+
+
+
+$tabsColor: #5f70aa;
+$tabsColorActive: #ffffff;
+$tabsActiveBg: #1b043b;
+
+
+$BlueBg: #1b043b;
+$BlueHeaderBg: #35106a;
+
+$headingBG: #35106a;
+$Textwhite: #ffffff;
+$Textlgtblue: #5f70aa;
+
+
+$buttonBg: #e6a60b;
+$buttonText: #fdfdfd;
+$buttonBgHover: #35106a;
+$buttonTextHover: #fdfdfd;
+
+
+
 #public .container-fluid {
-  background-color: $backgroundContainers;
+  background-color: $headerBg;
   height: 100vh;
   font-family: inherit;
 }
@@ -76,13 +107,17 @@ $font-weight-500: 500;
 }
 
 #public .container-fluid .row .col-boxes .router-box {
-  margin-top: 50px;
+  margin-top: 130px;
+  background-color: #f1eeee91;
+  padding: 30px 20px;
+  border-radius: 20px;
+  border: 5px solid #f1eeee91;
 }
 
 #form .heading-text h5 {
   text-align: center;
-  color: $image-bg;
-  padding-bottom: 8px;
+  color: white;
+  padding-bottom: 20px;
   font-size: 24px;
   font-family: $font-family-caavier-bold;
 }
@@ -91,18 +126,19 @@ $font-weight-500: 500;
   font-size: 18px;
   text-align: center;
   font-family: $font-family-caavier;
-  color: $image-bg;
+  color: white;
   padding-bottom: 18px;
 }
 
 #form form input {
+  padding: 2px 20px;
+  border-radius: 20px;
   height: $input-height;
-  border-radius: 0px;
   border: 1px solid white;
   font-size: $input-font-size;
   font-weight: $font-weight-400;
   font-family: $font-family-caavier-bold;
-  color: $input-color;
+  color: $BlueHeaderBg;
 }
 
 #form form input::placeholder {
@@ -121,30 +157,34 @@ $font-weight-500: 500;
 
 #form form button {
   box-shadow: none;
+  border-radius: 20px;
   width: 100%;
+  color: white;
   font-family: $font-family-caavier-bold;
   font-size: $input-font-size;
   height: $button-height;
-  background-color: $button-color;
-  border: 1px solid $input-color;
+  outline: none;
+  background-color: $headerBg;
+  border: 1px solid $headerBg;
 }
 
 #form form button:disabled {
   background-color: transparent;
-  color: $image-bg;
-  border: 1px solid $image-bg;
+  color: white;
+  border: 1px solid white;
   cursor: not-allowed;
 }
 
 #form form button:focus {
   box-shadow: none;
   outline: none;
+  outline: none;
 }
 
 #form form button:hover {
-  background-color: $backgroundContainers;
-  color: $image-bg;
-  border: 1px solid $image-bg;
+  background-color: $BlueHeaderBg;
+  color: white;
+  border: 3px solid $BlueHeaderBg;
 }
 
 #form form .links .links-routes {
@@ -155,7 +195,7 @@ $font-weight-500: 500;
 #form form .links .links-routes .register, #form form .links .links-routes .forgot {
   font-size: 14px ;
   font-weight: bolder !important;
-  color: #737373;
+  color: white;
   font-family: $font-family-caavier;
   cursor: pointer;
 }
@@ -172,13 +212,14 @@ $font-weight-500: 500;
   font-size: 12px;
   font-weight: $font-weight-400;
   padding: 0 5px 0 5px;
-  color: #737373;
+  color: white;
 }
 
 #form form .form-group small {
   font-size: 12px;
   font-weight: bolder !important;
-  color: #ff4d4d !important;
+  color: white !important;
+  margin-left: 15px;
   font-family: $font-family-caavier;
 }
 
@@ -187,7 +228,7 @@ $font-weight-500: 500;
   padding-top: 22.5px;
   font-size: 24px;
   font-family: $font-family-caavier-bold;
-  color: $image-bg;
+  color: white;
   text-align: center;
 }
 
@@ -205,7 +246,7 @@ $font-weight-500: 500;
   float: left;
   width: 100%;
   height: 100vh;
-  background: #404040;
+  background: $headerBg;
   position: fixed;
   z-index: 9999999999;
   font-family: $font-family-caavier-bold !important;
@@ -213,7 +254,7 @@ $font-weight-500: 500;
 
 #loader-container h3 {
   font-family: CaviarDreams Bold !important;
-  color: #47d1d1;
+  color: white;
   font-size: 44px;
 }
 
@@ -231,7 +272,7 @@ $font-weight-500: 500;
 #loader-container .spinner > div {
   width: 15px;
   height: 15px;
-  background-color: #47d1d1;
+  background-color: white;
   border-radius: 100%;
   display: inline-block;
   -webkit-animation: sk-bouncedelay 1.5s infinite ease-in-out both;
@@ -278,3 +319,44 @@ $font-weight-500: 500;
 }
 
 // spinner end
+
+
+//p paginator
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: transparent;
+}
+
+::ng-deep .mat-select-value {
+ color: $headerBg!important;
+ font-weight: bolder !important;
+ font-family: $font-family-caavier-bold;
+}
+
+::ng-deep .mat-paginator-icon {
+ color: $headerBg !important;
+ outline: none;
+ border: none;
+ box-shadow: none;
+}
+
+::ng-deep .mat-focus-indicator:focus {
+ outline: none;
+ box-shadow: none;
+ border-radius: none;
+}
+
+::ng-deep .mat-option{
+ background: $headerBg !important;
+}
+
+::ng-deep .mat-paginator-page-size-label, ::ng-deep .mat-paginator-range-label {
+ font-family: $font-family-caavier-bold;
+ color: $headerBg;
+ font-weight: bolder !important;
+}
+
+::ng-deep .mat-option-text {
+ color: white;
+ font-family: $font-family-caavier-bold;
+}

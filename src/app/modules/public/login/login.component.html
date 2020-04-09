@@ -7,26 +7,36 @@
       <p *ngIf="this.comapny">Select a company</p>
     </div>
 
-    <form [formGroup]="formData" role="form" name="formData" novalidate="" (ngSubmit)="login($event, formData.value)" class="col-sm-12" #myForm>
+    <form [formGroup]="formData" role="form" name="formData" novalidate="" (ngSubmit)="login($event, formData.value)"
+      class="col-sm-12" #myForm>
 
       <div class="form-group" *ngIf="!this.comapny">
 
-        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" autocomplete="off" formControlName="email">
+        <input mat-input type="email" class="form-control" id="email" placeholder="Enter email" name="email"
+          autocomplete="off" formControlName="email">
 
-        <small class="text-danger " *ngIf="formData.get('email').hasError('pattern') && (formData.controls['email'].dirty || formData.controls['email'].touched)">Email must be a valid email address.</small>
+        <small class="text-danger "
+          *ngIf="formData.get('email').hasError('pattern') && (formData.controls['email'].dirty || formData.controls['email'].touched)">Email
+          must be a valid email address.</small>
 
-        <small class="text-danger" *ngIf="formData.controls['email'].hasError('required') && (formData.controls['email'].dirty || formData.controls['email'].touched)">Email is required*</small>
+        <small class="text-danger"
+          *ngIf="formData.controls['email'].hasError('required') && (formData.controls['email'].dirty || formData.controls['email'].touched)">Email
+          is required*</small>
 
       </div>
 
       <div class="form-group" *ngIf="!this.comapny">
 
-        <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" autocomplete="off" formControlName="password" [formControl]="formData.get('password')">
+        <input mat-input type="password" class="form-control" id="password" placeholder="Enter password" name="password"
+          autocomplete="off" formControlName="password" [formControl]="formData.get('password')">
 
-        <small class="text-danger" *ngIf="formData.get('password').hasError('required') && (formData.get('password').dirty || formData.get('password').touched)">
+        <small class="text-danger"
+          *ngIf="formData.get('password').hasError('required') && (formData.get('password').dirty || formData.get('password').touched)">
           This field is required</small>
 
-        <small class="text-danger" *ngIf="formData.get('password').hasError('pattern') && (formData.get('password').dirty || formData.get('password').touched)">Incorrect password</small>
+        <small class="text-danger"
+          *ngIf="formData.get('password').hasError('pattern') && (formData.get('password').dirty || formData.get('password').touched)">Incorrect
+          password</small>
 
       </div>
 
@@ -35,14 +45,15 @@
           <div class="col-sm-12 company">
             <div class="box" *ngFor="let company of this.comapny">
               <div class="media">
-                <img [src]="company.avatar === null ? 'this.comapny.avatar' : '../../../../assets/img/company.jpg'" class="img-fluid" [alt]="'this.comapny.comapny_full_name'">
+                <img [src]="company.avatar === null ? 'this.comapny.avatar' : '../../../../assets/img/company.jpg'"
+                  class="img-fluid" [alt]="'this.comapny.comapny_full_name'">
                 <div class="media-body">
                   <h5 class="mt-1 ml-2 company_name"> {{ company.company_full_name }} </h5>
                 </div>
 
-                <div class="custom-control custom-switch mt-1">
-                  <input type="checkbox" class="custom-control-input" (change)="login($event, company.id)" id="switch1" name="example">
-                  <label class="custom-control-label" for="switch1"></label>
+                <div class="custom-control mt-1">
+                  <mat-slide-toggle class="example-margin" (change)="login($event, company.id)" [checked]="checked" [disabled]="disabled">
+                  </mat-slide-toggle>
                 </div>
               </div>
             </div>
@@ -50,7 +61,8 @@
         </div>
       </div>
 
-      <button *ngIf="!this.comapny" type="submit" class="btn btn-primary" [disabled]="formData.invalid">Login</button>
+      <button mat-flat-button *ngIf="!this.comapny" type="submit" class="btn btn-primary"
+        [disabled]="formData.invalid">Login</button>
 
       <div *ngIf="!this.comapny" class="links row justify-content-center">
         <div class="col-sm-8 links-routes">
