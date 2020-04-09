@@ -14,7 +14,8 @@ import { AlertService } from '../../../services/shared/alert.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+  public checked = false;
+  public disabled = false;
   public formData: FormGroup;
   public error: string;
   public user: any;
@@ -63,8 +64,6 @@ export class LoginComponent implements OnInit {
   }
 
   login($ev, values: any) {
-    $ev.preventDefault();
-
     // tslint:disable-next-line: forin
     for (const control in this.formData.controls) {
       this.formData.controls[control].markAsTouched();

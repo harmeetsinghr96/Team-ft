@@ -1,9 +1,11 @@
+@import '../../../../styles.scss';
+
 .company {
   overflow: auto;
-  min-height: 250px;
+  max-height: 250px;
   padding: 12px 12px;
-  border-radius: 5px;
-  background-color: #248f8f;
+  border-radius: 10px;
+  background-color: $headerBg;
   -ms-overflow-style: none;
 }
 
@@ -31,7 +33,7 @@
 
 .company .company_name {
   font-size: 16px;
-  color: #248f8f;
+  color: $headerBg;
   padding-top: 4px;
   font-family: CaviarDreams Bold;
   overflow: hidden;
@@ -40,7 +42,7 @@
 .custom-control-input, .custom-control-label {
   background-color: white;
   color: white;
-  border: #248f8f;
+  border: $headerBg;
 }
 
 label::after {
@@ -55,6 +57,12 @@ label::before {
   color: white !important;
   box-shadow: none !important;
   outline: none !important;
-  background-color: #248f8f !important;
+  background-color: $headerBg !important;
 }
 
+::ng-deep.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: $headerBg
+}
+::ng-deep.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: white;
+}

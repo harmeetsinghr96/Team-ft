@@ -13,6 +13,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [],
@@ -31,7 +32,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     NgbModule,
     NgbDropdownModule,
     MatFormFieldModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSlideToggleModule
   ],
   exports: [
     ReactiveFormsModule,
@@ -47,7 +49,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     NgbModule,
     NgbDropdownModule,
     MatFormFieldModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSlideToggleModule
   ]
 })
 
