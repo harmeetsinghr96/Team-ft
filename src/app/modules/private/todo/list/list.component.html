@@ -19,7 +19,7 @@
       <div style="margin-top: -15px;">
         <div class="example-box" *ngFor="let movie of movies" cdkDrag>
           <mat-accordion class="w-100">
-            <mat-expansion-panel class="accordian">
+            <mat-expansion-panel class="accordian" (click)="close($event, movie.name)">
               <mat-expansion-panel-header class="arrow-expansion">
                 <mat-panel-title>
                   <mat-icon class="drag-icon">drag_indicator</mat-icon>
@@ -36,7 +36,7 @@
               </mat-expansion-panel-header>
 
               <section class="pend-done w-100">
-                  <app-tasks></app-tasks>
+                  <app-tasks [todoId]='movie.id'></app-tasks>
               </section>
 
             </mat-expansion-panel>

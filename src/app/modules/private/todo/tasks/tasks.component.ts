@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 
 @Component({
@@ -7,6 +7,8 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
   styleUrls: ['./tasks.component.scss']
 })
 export class TasksComponent implements OnInit {
+  @Input() todoId: string;
+
   todo = [
     'Get to work',
     'Pick up groceries',
@@ -19,9 +21,10 @@ export class TasksComponent implements OnInit {
     'Take a shower'
   ];
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
+    console.log(this.todoId);
   }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -34,5 +37,7 @@ export class TasksComponent implements OnInit {
                         event.currentIndex);
     }
   }
+
+
 
 }

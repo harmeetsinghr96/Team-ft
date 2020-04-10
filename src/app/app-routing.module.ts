@@ -14,7 +14,7 @@ const routes: Routes = [
 
   // private routes start
   { path: 'dashboard', component: PrivateComponent, children: [
-    { path: '', redirectTo: 'todo', pathMatch: 'full' },
+    { path: '', redirectTo: 'members', pathMatch: 'full' },
     { path: '', loadChildren: () => import('./modules/private/private.module').then(module => module.PrivateModule ) }
   ]}
 ];
