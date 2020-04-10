@@ -25,20 +25,18 @@
                   <mat-icon class="drag-icon">drag_indicator</mat-icon>
                 </mat-panel-title>
                 <mat-panel-title>
+                  {{ movie.ref_id }}
+                </mat-panel-title>
+                <mat-panel-title>
                   {{ movie.title }}
+                </mat-panel-title>
+                <mat-panel-title>
+                  icons
                 </mat-panel-title>
               </mat-expansion-panel-header>
 
-              <section class="pend-done">
-                <div class="row">
-                  <div class="col-sm-6">
-                    <h1>Pending</h1>
-                  </div>
-
-                  <div class="col-sm-6">
-                    <h1>Done</h1>
-                  </div>
-                </div>
+              <section class="pend-done w-100">
+                  <app-tasks></app-tasks>
               </section>
 
             </mat-expansion-panel>
