@@ -91,6 +91,17 @@ $buttonBgHover: #35106a;
 $buttonTextHover: #fdfdfd;
 
 
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #666;
+}
+
+::-webkit-scrollbar-track {
+  background: #ddd;
+}
 
 #public .container-fluid {
   background-color: $headerBg;
@@ -236,7 +247,7 @@ $buttonTextHover: #fdfdfd;
   font-size: 16px;
   font-family: $font-family-caavier;
   font-size: 500 !important;
-  color: $image-bg;
+  color: white;
   padding: 10px 0 10px 0;
   text-align: center;
 }

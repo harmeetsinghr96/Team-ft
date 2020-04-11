@@ -3,7 +3,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import * as AuthActions from '../../../_store/_actions/auth.actions';
-import * as state from '../../../_store/store.reducer';
+import * as state from '../../../_store/store.reducers';
 
 import { Store } from '@ngrx/store';
 import { User } from 'src/app/models/user.model';

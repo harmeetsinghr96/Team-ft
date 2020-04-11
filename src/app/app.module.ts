@@ -10,10 +10,9 @@ import { environment } from 'src/environments/environment';
 
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import CombinedReducer from './_store/store.reducer';
+import CombinedReducer from './_store/store.reducers';
 
 import { EffectsModule } from '@ngrx/effects';
-import { AuthEffets } from './_store/_effects/auth.effext';
 
 import { RequestInterceptorService } from './_constant/interceptors/interceptor.service';
 
@@ -30,6 +29,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AlertComponent } from './components/alert/alert.component';
+import CombinedEffets from './_store/store.effets';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,7 @@ import { AlertComponent } from './components/alert/alert.component';
     HeaderComponent,
     FooterComponent,
     LoaderComponent,
-    AlertComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +45,7 @@ import { AlertComponent } from './components/alert/alert.component';
     BrowserAnimationsModule,
     HttpClientModule,
     StoreModule.forRoot(CombinedReducer),
-    EffectsModule.forRoot([AuthEffets]),
+    EffectsModule.forRoot(CombinedEffets),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),
     LayoutModule,
     SharedModule,

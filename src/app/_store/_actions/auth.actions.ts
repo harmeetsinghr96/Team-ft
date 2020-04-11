@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import * as types from './types';
+import * as types from './_types/auth.type';
 import { User } from 'src/app/models/user.model';
 
 // REGISTER ACTIONS

@@ -1,0 +1,23 @@
+@import '../../../../../styles.scss';
+
+.example-card {
+  max-width: 100%;
+}
+
+.example-header-image {
+  background-image: url('../../../../../assets/img//user1.jpg');
+  background-size: cover;
+}
+
+
+mat-card-title {
+  font-family: $font-family-caavier-bold;
+  color: $headerBg;
+  font-size: 16px;
+}
+
+mat-card-subtitle {
+  font-family: $font-family-caavier;
+  color: $headerBg;
+  font-size: 14px;
+}

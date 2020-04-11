@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlertService } from 'src/app/services/shared/alert.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Store } from '@ngrx/store';
-import * as state from '../../../_store/store.reducer';
+import * as state from '../../../_store/store.reducers';
 import { PlaceholderDirective } from 'src/app/directives/placeholder.directive';
 import * as AuthActions from '../../../_store/_actions/auth.actions';
 import { User } from 'src/app/models/user.model';

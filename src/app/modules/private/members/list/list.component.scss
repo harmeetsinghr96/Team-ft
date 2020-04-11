@@ -1,0 +1,67 @@
+@import '../../../../../styles.scss';
+
+#members-list {
+  .h3 {
+    font-size: 22px;
+    font-family: $font-family-caavier-bold;
+    font-weight: bolder !important;
+    color: $headerBg;
+    padding: 10px 0px;
+  }
+
+  .table-box {
+    background-color: white;
+    padding: 15px;
+    height: 100%;
+    border-radius: 5px;
+
+    .mat-form-field {
+      width: 100%;
+    }
+
+    ::ng-deep .mat-form-field {
+
+      .mat-input-element {
+          color: $headerBg;
+          font-family: $font-family-caavier-bold;
+
+      }
+      .mat-form-field-label {
+          font-family: $font-family-caavier-bold;
+          color: $headerBg;
+      }
+      .mat-form-field-underline {
+          background-color: $headerBg;
+      }
+      .mat-form-field-ripple {
+          background-color: $headerBg;
+      }
+      .mat-form-field-required-marker {
+          color: $headerBg;
+      }
+    }
+
+    table {
+      border-radius: 5px;
+      background-color: $headerBg;
+      width: 100%;
+      height: 100%;
+    }
+
+    td {
+      cursor: pointer;
+      color: white;
+      font-family: $font-family-caavier;
+      font-weight: 500 !important;
+    }
+
+    th {
+      color: white;
+      font-size: 16px;
+      font-family: $font-family-caavier-bold;
+      font-weight: bolder !important;
+    }
+  }
+}
+
+
