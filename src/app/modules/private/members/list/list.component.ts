@@ -66,6 +66,6 @@ export class ListComponent implements OnInit {
           data: { member: this.member }
         });
       }
-    }, 1000);
+    }, 700);
   }
 }
