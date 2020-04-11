@@ -3,7 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
-import * as state from '../../_store/store.reducer';
+import * as state from '../../_store/store.reducers';
 import { User } from 'src/app/models/user.model';
 
 @Component({

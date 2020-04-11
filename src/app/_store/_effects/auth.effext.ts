@@ -4,7 +4,7 @@ import { of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { ApiService } from 'src/app/services/API/auth.service';
 
-import * as types from '../_actions/types';
+import * as types from '../_actions/_types/auth.type';
 import * as AuthActions from '../_actions/auth.actions';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';

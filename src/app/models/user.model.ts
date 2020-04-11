@@ -1,7 +1,10 @@
 export class User {
 
   constructor(
+    public avatar?: string,
     public email?: string,
+    // tslint:disable-next-line: variable-name
+    public login_status?: string,
     public password?: string,
     // tslint:disable-next-line: variable-name
     public full_name?: string,

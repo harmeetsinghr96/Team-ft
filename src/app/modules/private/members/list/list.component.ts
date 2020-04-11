@@ -1,17 +1,13 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Injectable } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { ViewComponent } from '../view/view.component';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-  active: boolean;
-}
+import { Store } from '@ngrx/store';
+import * as state from '../../../../_store/store.reducers';
+import * as MemberActions from '../../../../_store/_actions/member.action';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-list',
@@ -21,43 +17,47 @@ export interface PeriodicElement {
 
 export class ListComponent implements OnInit {
 
-  public tableData: PeriodicElement[] = [
-    { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H', active: true },
-    { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He', active: true },
-    { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li', active: false },
-    { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be', active: true },
-    { position: 5, name: 'Boron', weight: 10.811, symbol: 'B', active: true },
-    { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C', active: true },
-    { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N', active: true },
-    { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O', active: true },
-    { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F', active: true },
-    { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne', active: true },
-    { position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na', active: true },
-  ];
-
-  public displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'active', 'active'];
-  public dataSource = new MatTableDataSource<PeriodicElement>(this.tableData);
+  public members: User[] = [];
+  public error: string;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private bottomSheet: MatBottomSheet) { }
+  public displayedColumns: string[] = ['#', 'image', 'name', 'email', 'admin', 'super_admin', 'active'];
+  public membersDataSource: MatTableDataSource<User>;
+
+  constructor(private bottomSheet: MatBottomSheet, private store$: Store<state.AppState>) { }
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.store$.select('members').subscribe(appState => {
+      this.members = appState.members;
+      this.error = appState.error;
+    });
+
+    this.loadMemberAction();
+
+    this.membersDataSource = new MatTableDataSource(this.members);
+    this.membersDataSource.paginator = this.paginator;
+    this.membersDataSource.sort = this.sort;
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  private loadMemberAction() {
+    this.store$.dispatch(new MemberActions.MemberListStart());
+  }
 
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
+  public applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.membersDataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.membersDataSource.paginator) {
+      this.membersDataSource.paginator.firstPage();
     }
   }
 
-  openBottomSheet() {
-    this.bottomSheet.open<any>(ViewComponent);
+  public openBottomSheet(id: string) {
+    const userId = id;
+    this.bottomSheet.open<any>(ViewComponent, {
+      data: { id: userId }
+    });
   }
 }

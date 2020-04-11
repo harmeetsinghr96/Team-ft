@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/_store/store.reducer';
+import { AppState } from 'src/app/_store/store.reducers';
 import * as AuthActions from '../../../_store/_actions/auth.actions';
 import { PlaceholderDirective } from '../../../directives/placeholder.directive';
 import { User } from 'src/app/models/user.model';

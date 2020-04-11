@@ -5,32 +5,62 @@
       <div class="col-sm-6">
         <mat-card class="example-card">
           <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title>Shiba Inu</mat-card-title>
-            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+            <div mat-card-avatar class="example-header-image">
+              <img [src]="member.avatar !== null ? member.avatar : ''" alt="">
+            </div>
+            <mat-card-title> {{ member.full_name }} </mat-card-title>
+            <mat-card-subtitle> {{ member.role }} </mat-card-subtitle>
           </mat-card-header>
 
           <mat-card-content>
             <div class="row">
               <div class="col-sm-6">
                 <mat-list>
-                  <div mat-subheader>Folders</div>
-                  <mat-list-item *ngFor="let folder of folders">
+                  <div mat-subheader>Details.</div>
+                  <mat-list-item>
                     <mat-icon mat-list-icon>folder</mat-icon>
-                    <div mat-line>{{folder.name}}</div>
-                    <div mat-line> {{folder.updated | date}} </div>
+                    <div mat-line>Email</div>
+                    <div mat-line> {{ member.email }} </div>
+                  </mat-list-item>
+                  <mat-divider></mat-divider>
+
+                  <mat-list-item>
+                    <mat-icon mat-list-icon>folder</mat-icon>
+                    <div mat-line>Super Admin</div>
+                    <div mat-line> {{ member.super_admin === true ? 'Yes' : 'No' }} </div>
+                  </mat-list-item>
+                  <mat-divider></mat-divider>
+
+                  <mat-list-item>
+                    <mat-icon mat-list-icon>folder</mat-icon>
+                    <div mat-line>Admin</div>
+                    <div mat-line> {{ member.admin === true ? 'Yes' : 'No' }} </div>
                   </mat-list-item>
                   <mat-divider></mat-divider>
                 </mat-list>
               </div>
 
-              <div class="col-sm-6">
-                <mat-list>
-                  <div mat-subheader>Folders</div>
-                  <mat-list-item *ngFor="let folder of folders">
+              <div class="col-sm-6 mt-3">
+                <mat-list class="mt-4">
+
+                  <mat-list-item>
                     <mat-icon mat-list-icon>folder</mat-icon>
-                    <div mat-line>{{folder.name}}</div>
-                    <div mat-line> {{folder.updated | date}} </div>
+                    <div mat-line> #Reference </div>
+                    <div mat-line> MEB:{{ member.ref_id }} </div>
+                  </mat-list-item>
+                  <mat-divider></mat-divider>
+
+                  <mat-list-item>
+                    <mat-icon mat-list-icon>folder</mat-icon>
+                    <div mat-line> Verified </div>
+                    <div mat-line> {{ member.is_verified === true ? 'Verified' : 'unverified' }} </div>
+                  </mat-list-item>
+                  <mat-divider></mat-divider>
+
+                  <mat-list-item>
+                    <mat-icon mat-list-icon>folder</mat-icon>
+                    <div mat-line> Created at </div>
+                    <div mat-line> {{ member.created_at }} </div>
                   </mat-list-item>
                   <mat-divider></mat-divider>
                 </mat-list>
@@ -38,8 +68,7 @@
             </div>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-button>Block</button>
-            <button mat-button>Unblock</button>
+            <!-- <button mat-button disabled> {{ member.login_status === true ? 'Active' : 'Inactive' }} </button> -->
           </mat-card-actions>
         </mat-card>
       </div>

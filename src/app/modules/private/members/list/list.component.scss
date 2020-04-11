@@ -49,6 +49,7 @@
     }
 
     td {
+      cursor: pointer;
       color: white;
       font-family: $font-family-caavier;
       font-weight: 500 !important;
@@ -60,7 +61,6 @@
       font-family: $font-family-caavier-bold;
       font-weight: bolder !important;
     }
-
   }
 }
 

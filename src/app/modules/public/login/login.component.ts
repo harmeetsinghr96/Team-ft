@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import * as state from '../../../_store/store.reducer';
+import * as state from '../../../_store/store.reducers';
 import * as AuthActions from '../../../_store/_actions/auth.actions';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
