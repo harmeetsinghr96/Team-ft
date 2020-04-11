@@ -4,7 +4,6 @@ import { Store } from '@ngrx/store';
 import * as state from '../../../../_store/store.reducers';
 import * as MemberActions from '../../../../_store/_actions/member.action';
 import { User } from 'src/app/models/user.model';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-view',
@@ -35,16 +34,7 @@ export class ViewComponent implements OnInit {
               private store$: Store<state.AppState>) { }
 
   ngOnInit() {
-    const id = this.data.id;
-    this.getSingleMember(id);
-    this.store$.select('members').subscribe(appState => {
-      this.member = appState.member;
-      this.company = this.member?.company;
-    });
-  }
-
-  private getSingleMember(userId) {
-    this.store$.dispatch(new MemberActions.MemberShowStart({ id: userId }));
+    this.member = this.data.member;
   }
 
   openLink(event: MouseEvent) {

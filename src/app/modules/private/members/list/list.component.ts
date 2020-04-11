@@ -19,6 +19,7 @@ export class ListComponent implements OnInit {
 
   public members: User[] = [];
   public error: string;
+  public member: User;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -32,6 +33,7 @@ export class ListComponent implements OnInit {
     this.store$.select('members').subscribe(appState => {
       this.members = appState.members;
       this.error = appState.error;
+      this.member = appState.member;
     });
 
     this.loadMemberAction();
@@ -56,8 +58,14 @@ export class ListComponent implements OnInit {
 
   public openBottomSheet(id: string) {
     const userId = id;
-    this.bottomSheet.open<any>(ViewComponent, {
-      data: { id: userId }
-    });
+    this.store$.dispatch(new MemberActions.MemberShowStart({ id: userId }));
+
+    setTimeout(() => {
+      if (this.member !== null) {
+        this.bottomSheet.open<any>(ViewComponent, {
+          data: { member: this.member }
+        });
+      }
+    }, 1000);
   }
 }
