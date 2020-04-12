@@ -34,7 +34,6 @@ export class AuthEffets {
 
       return this.apiService.login(user).pipe(
         map((res: any) => {
-          console.log(res);
           return new AuthActions.Login({ user: res.data.user, token: res.data.token });
         }),
         catchError(errorRes => {
@@ -197,4 +196,15 @@ export class AuthEffets {
       this.router.navigate(['/email-sent']);
     })
   );
+
+  // @Effect({ dispatch: false })
+  // loginSucess = this.actions$.pipe(
+  //   ofType(types.LOGIN),
+  //   tap(() => {
+  //     const state = JSON.parse(localStorage.getItem('_state'));
+  //     if (state.token !== null) {
+  //       this.router.navigate(['/dashboard']);
+  //     }
+  //   })
+  // );
 }

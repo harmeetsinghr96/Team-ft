@@ -3,10 +3,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import * as state from '../../../_store/store.reducers';
 import * as AuthActions from '../../../_store/_actions/auth.actions';
-import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { PlaceholderDirective } from 'src/app/directives/placeholder.directive';
 import { AlertService } from '../../../services/shared/alert.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -26,42 +26,41 @@ export class LoginComponent implements OnInit {
   @ViewChild('myForm', { static: true }) form: ElementRef;
 
   constructor(private store: Store<state.AppState>,
-              private router: Router,
-              private alertService: AlertService) { }
+              private alertService: AlertService,
+              private router: Router) { }
 
   ngOnInit() {
     this.store.select('auth').subscribe(authState => {
       this.error = authState.error;
       this.user = authState.user;
       this.token = authState.token;
+
       if (this.error) {
         this.alertService.showErrorAlert(this.alertHost, this.error);
+      } else if (this.token !== null) {
+        // this.router.navigate(['/dashboard']);
       }
-
-
-      if (this.user && this.token) {
-        this.router.navigateByUrl('/dashboard');
-      }
-
 
       if (this.user) {
+        console.log(this.user.company);
         if (Array.isArray(this.user.company)) {
           this.comapny = this.user.company;
 
-          if (Array.isArray(this.comapny)) {
-            const inputs: Array<any> = this.form.nativeElement.elements;
-            const email: HTMLInputElement = inputs[0];
-            const password: HTMLInputElement = inputs[1];
+          // if (Array.isArray(this.comapny)) {
+          //   const inputs: Array<any> = this.form.nativeElement.elements;
+          //   const email: HTMLInputElement = inputs[0];
+          //   const password: HTMLInputElement = inputs[1];
 
-            email.setAttribute('disabled', 'true');
-            password.setAttribute('disabled', 'true');
-          }
+          //   email.setAttribute('disabled', 'true');
+          //   password.setAttribute('disabled', 'true');
+          // }
         }
       }
     });
 
     this.initForm();
   }
+
 
   login($ev, values: any) {
     // tslint:disable-next-line: forin

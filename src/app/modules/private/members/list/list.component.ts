@@ -34,6 +34,12 @@ export class ListComponent implements OnInit {
       this.members = appState.members;
       this.error = appState.error;
       this.member = appState.member;
+
+      if (this.member !== null) {
+        this.bottomSheet.open<any>(ViewComponent, {
+          data: { member: this.member }
+        });
+      }
     });
 
     this.loadMemberAction();
@@ -59,13 +65,5 @@ export class ListComponent implements OnInit {
   public openBottomSheet(id: string) {
     const userId = id;
     this.store$.dispatch(new MemberActions.MemberShowStart({ id: userId }));
-
-    setTimeout(() => {
-      if (this.member !== null) {
-        this.bottomSheet.open<any>(ViewComponent, {
-          data: { member: this.member }
-        });
-      }
-    }, 700);
   }
 }

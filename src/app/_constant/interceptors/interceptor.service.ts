@@ -31,24 +31,42 @@ export class RequestInterceptorService implements HttpInterceptor {
         return authState.token;
       }),
       exhaustMap(token => {
-        const apiReq = req.clone({
-          url: `${environment.API_HOST}/${req.url}`,
-          headers: new HttpHeaders({
-            Authorization: 'Bearer ' + token,
-          })
-        });
+        if (!token) {
+          const apiReq = req.clone({
+            url: `${environment.API_HOST}/${req.url}`,
+          });
 
-        return next.handle(apiReq).pipe(
-          tap((event) => {
-            this.loader.state(true);
-            if (event instanceof HttpResponse) {
-              this.loader.state(false);
-            }
-          }, (error) => {
-              this.loader.state(false);
-            }
-          )
-        );
+          return next.handle(apiReq).pipe(
+            tap((event) => {
+              this.loader.state(true);
+              if (event instanceof HttpResponse) {
+                this.loader.state(false);
+              }
+            }, (error) => {
+                this.loader.state(false);
+              }
+            )
+          );
+        } else {
+          const apiReq = req.clone({
+            url: `${environment.API_HOST}/${req.url}`,
+            headers: new HttpHeaders({
+              Authorization: 'Bearer ' + token,
+            })
+          });
+
+          return next.handle(apiReq).pipe(
+            tap((event) => {
+              this.loader.state(true);
+              if (event instanceof HttpResponse) {
+                this.loader.state(false);
+              }
+            }, (error) => {
+                this.loader.state(false);
+              }
+            )
+          );
+        }
       })
     );
   }
