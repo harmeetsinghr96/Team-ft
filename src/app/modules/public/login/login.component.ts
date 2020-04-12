@@ -37,23 +37,18 @@ export class LoginComponent implements OnInit {
 
       if (this.error) {
         this.alertService.showErrorAlert(this.alertHost, this.error);
-      } else if (this.token !== null) {
-        // this.router.navigate(['/dashboard']);
       }
 
       if (this.user) {
-        console.log(this.user.company);
         if (Array.isArray(this.user.company)) {
           this.comapny = this.user.company;
+          const inputs: Array<any> = this.form.nativeElement.elements;
+          const email: HTMLInputElement = inputs[0];
+          const password: HTMLInputElement = inputs[1];
 
-          // if (Array.isArray(this.comapny)) {
-          //   const inputs: Array<any> = this.form.nativeElement.elements;
-          //   const email: HTMLInputElement = inputs[0];
-          //   const password: HTMLInputElement = inputs[1];
+          email.setAttribute('disabled', 'true');
+          password.setAttribute('disabled', 'true');
 
-          //   email.setAttribute('disabled', 'true');
-          //   password.setAttribute('disabled', 'true');
-          // }
         }
       }
     });

@@ -31,23 +31,23 @@ export class RequestInterceptorService implements HttpInterceptor {
         return authState.token;
       }),
       exhaustMap(token => {
-        if (!token) {
-          const apiReq = req.clone({
-            url: `${environment.API_HOST}/${req.url}`,
-          });
+        // if (!token) {
+        //   const apiReq = req.clone({
+        //     url: `${environment.API_HOST}/${req.url}`,
+        //   });
 
-          return next.handle(apiReq).pipe(
-            tap((event) => {
-              this.loader.state(true);
-              if (event instanceof HttpResponse) {
-                this.loader.state(false);
-              }
-            }, (error) => {
-                this.loader.state(false);
-              }
-            )
-          );
-        } else {
+        //   return next.handle(apiReq).pipe(
+        //     tap((event) => {
+        //       this.loader.state(true);
+        //       if (event instanceof HttpResponse) {
+        //         this.loader.state(false);
+        //       }
+        //     }, (error) => {
+        //         this.loader.state(false);
+        //       }
+        //     )
+        //   );
+        // } else {
           const apiReq = req.clone({
             url: `${environment.API_HOST}/${req.url}`,
             headers: new HttpHeaders({
@@ -66,7 +66,7 @@ export class RequestInterceptorService implements HttpInterceptor {
               }
             )
           );
-        }
+        // }
       })
     );
   }

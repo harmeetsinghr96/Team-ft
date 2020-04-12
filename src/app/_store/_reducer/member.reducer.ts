@@ -19,22 +19,22 @@ const initState: State = {
 export const MemberReducer = (state = initState, action: memberAction.MemberActions) => {
   switch (action.type) {
     case types.MEMBER_LIST_START:
-      return { ...state, loading: true };
+      return { ...state, loading: true, members: null, member: null, error: null };
 
     case types.MEMBER_LIST:
-      return { ...state, loading: false, members: action.payload.members };
+      return { ...state, loading: false, members: action.payload.members, member: null, error: null };
 
     case types.MEMBER_LIST_FAILED:
-      return { ...state, loading: false, error: action.payload };
+      return { ...state, loading: false, members: null, member: null, error: action.payload };
 
     case types.MEMBER_SHOW_START:
-      return { ...state, loading: true };
+      return { ...state, loading: true, member: null, error: null };
 
     case types.MEMBER_SHOW:
-      return { ...state, loading: false, member: action.payload.member };
+      return { ...state, loading: false, member: action.payload.member, error: null };
 
     case types.MEMBER_SHOW_FAILED:
-      return { ...state, loading: false, error: action.payload };
+      return { ...state, loading: false, member: null, error: action.payload };
 
     case types.RESET_MEMBER_SHOW:
       return { ...state, loading: false, member: null, error: null };

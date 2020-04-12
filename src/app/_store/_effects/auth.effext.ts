@@ -8,12 +8,15 @@ import * as types from '../_actions/_types/auth.type';
 import * as AuthActions from '../_actions/auth.actions';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
+import { Store } from '@ngrx/store';
+import { AppState } from '../store.reducers';
 
 @Injectable()
 export class AuthEffets {
 
   constructor(private actions$: Actions,
               private apiService: ApiService,
+              private store$: Store<AppState>,
               private router: Router) { }
 
   @Effect()
@@ -197,14 +200,16 @@ export class AuthEffets {
     })
   );
 
-  // @Effect({ dispatch: false })
-  // loginSucess = this.actions$.pipe(
-  //   ofType(types.LOGIN),
-  //   tap(() => {
-  //     const state = JSON.parse(localStorage.getItem('_state'));
-  //     if (state.token !== null) {
-  //       this.router.navigate(['/dashboard']);
-  //     }
-  //   })
-  // );
+  @Effect({ dispatch: false })
+  isSignedIn = this.actions$.pipe(
+    ofType(types.LOGIN),
+    map(() => {
+      this.store$.select('auth').subscribe(state => {
+        if (state.isSignedIn === true) {
+          console.log(state.isSignedIn);
+          return this.router.navigate(['/dashboard']);
+        }
+      });
+    })
+  );
 }
