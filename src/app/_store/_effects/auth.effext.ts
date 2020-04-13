@@ -37,6 +37,10 @@ export class AuthEffets {
 
       return this.apiService.login(user).pipe(
         map((res: any) => {
+          if (res.data.token && res.data.token) {
+            this.router.navigate(['/dashboard']);
+          }
+
           return new AuthActions.Login({ user: res.data.user, token: res.data.token });
         }),
         catchError(errorRes => {
@@ -197,19 +201,6 @@ export class AuthEffets {
     ofType(types.FORGOT),
     tap(() => {
       this.router.navigate(['/email-sent']);
-    })
-  );
-
-  @Effect({ dispatch: false })
-  isSignedIn = this.actions$.pipe(
-    ofType(types.LOGIN),
-    map(() => {
-      this.store$.select('auth').subscribe(state => {
-        if (state.isSignedIn === true) {
-          console.log(state.isSignedIn);
-          return this.router.navigate(['/dashboard']);
-        }
-      });
     })
   );
 }

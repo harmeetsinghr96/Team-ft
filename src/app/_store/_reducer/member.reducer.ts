@@ -19,7 +19,7 @@ const initState: State = {
 export const MemberReducer = (state = initState, action: memberAction.MemberActions) => {
   switch (action.type) {
     case types.MEMBER_LIST_START:
-      return { ...state, loading: true, members: null, member: null, error: null };
+      return { ...state, loading: true, member: null, error: null };
 
     case types.MEMBER_LIST:
       return { ...state, loading: false, members: action.payload.members, member: null, error: null };

@@ -3,6 +3,7 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 import { PublicComponent } from './layout/public/public.component';
 import { PrivateComponent } from './layout/private/private.component';
+import { AuthGuard } from './_constant/guards/auth.guard';
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   // private routes start
   { path: 'dashboard', component: PrivateComponent, children: [
     { path: '', redirectTo: 'members', pathMatch: 'full' },
-    { path: '', loadChildren: () => import('./modules/private/private.module').then(module => module.PrivateModule ) }
+    { path: '', canActivate: [AuthGuard],
+      loadChildren: () => import('./modules/private/private.module').then(module => module.PrivateModule ) }
   ]}
 ];
 

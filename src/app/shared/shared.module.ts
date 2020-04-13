@@ -20,6 +20,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [],
@@ -46,6 +49,8 @@ import { MatListModule } from '@angular/material/list';
     MatTableModule,
     MatBottomSheetModule,
     MatCardModule,
+    MatTooltipModule,
+    MatDialogModule
   ],
   exports: [
     ReactiveFormsModule,
@@ -69,6 +74,8 @@ import { MatListModule } from '@angular/material/list';
     MatTableModule,
     MatBottomSheetModule,
     MatCardModule,
+    MatTooltipModule,
+    MatDialogModule
   ]
 })
 

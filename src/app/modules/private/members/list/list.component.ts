@@ -8,6 +8,8 @@ import { Store } from '@ngrx/store';
 import * as state from '../../../../_store/store.reducers';
 import * as MemberActions from '../../../../_store/_actions/member.action';
 import { User } from 'src/app/models/user.model';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { AlertModalComponent } from 'src/app/components/alert-modal/alert-modal.component';
 
 @Component({
   selector: 'app-list',
@@ -27,7 +29,9 @@ export class ListComponent implements OnInit {
   public displayedColumns: string[] = ['#', 'image', 'name', 'email', 'admin', 'super_admin', 'active'];
   public membersDataSource: MatTableDataSource<User>;
 
-  constructor(private bottomSheet: MatBottomSheet, private store$: Store<state.AppState>) { }
+  constructor(private bottomSheet: MatBottomSheet,
+              public dialog: MatDialog,
+              private store$: Store<state.AppState>) { }
 
   ngOnInit() {
     this.store$.select('members').subscribe(appState => {
@@ -42,6 +46,7 @@ export class ListComponent implements OnInit {
       }
     });
 
+    this.openDialog();
     this.loadMemberAction();
 
     this.membersDataSource = new MatTableDataSource(this.members);
@@ -65,5 +70,17 @@ export class ListComponent implements OnInit {
   public openBottomSheet(id: string) {
     const userId = id;
     this.store$.dispatch(new MemberActions.MemberShowStart({ id: userId }));
+  }
+
+  public openDialog(): void {
+    const dialogRef = this.dialog.open(AlertModalComponent, {
+      width: '250px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // this.animal = result;
+    });
   }
 }

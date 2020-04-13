@@ -30,6 +30,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AlertComponent } from './components/alert/alert.component';
 import CombinedEffets from './_store/store.effets';
+import { AlertModalComponent } from './components/alert-modal/alert-modal.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import CombinedEffets from './_store/store.effets';
     HeaderComponent,
     FooterComponent,
     LoaderComponent,
-    AlertComponent
+    AlertComponent,
+    AlertModalComponent
   ],
   imports: [
     BrowserModule,
