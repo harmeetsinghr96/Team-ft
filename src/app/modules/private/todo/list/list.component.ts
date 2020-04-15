@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { AppState } from 'src/app/_store/store.reducers';
+import { Todo } from 'src/app/models/todo.model';
+import { Store } from '@ngrx/store';
+import * as TodoTaskActions from '../../../../_store/_actions/todo-task.actions';
 
 @Component({
   selector: 'app-list',
@@ -8,28 +12,25 @@ import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 })
 export class ListComponent implements OnInit {
   public panelOpenState = false;
-  public movies = [
-    {
-      id: '0',
-      title: 'Today',
-      ref_id: 'TD:0',
-      poster: 'https://upload.wikimedia.org/wikipedia/en/4/40/Star_Wars_Phantom_Menace_poster.jpg'
-    },
-    {
-      id: '1',
-      title: 'Today',
-      ref_id: 'TD:0',
-      poster: 'https://upload.wikimedia.org/wikipedia/en/4/40/Star_Wars_Phantom_Menace_poster.jpg'
-    }
-  ];
+  public todos: Todo[] = [];
 
-  constructor() { }
+  constructor(private store$: Store<AppState>) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.store$.select('todoTask').subscribe(state => {
+      this.todos = state.todos;
+      console.log(this.todos);
+    });
+
+    this.loadTodo();
+  }
+
+  private loadTodo() {
+    this.store$.dispatch(new TodoTaskActions.TodoListStart());
   }
 
   drop(event: CdkDragDrop<{title: string, poster: string}[]>) {
-    moveItemInArray(this.movies, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.todos, event.previousIndex, event.currentIndex);
   }
 
   close(event: Event, name: string) {

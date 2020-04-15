@@ -46,7 +46,6 @@ export class ListComponent implements OnInit {
       }
     });
 
-    this.openDialog();
     this.loadMemberAction();
 
     this.membersDataSource = new MatTableDataSource(this.members);
@@ -74,7 +73,8 @@ export class ListComponent implements OnInit {
 
   public openDialog(): void {
     const dialogRef = this.dialog.open(AlertModalComponent, {
-      width: '250px',
+      width: '600px',
+      height: '600px',
       data: {}
     });
 

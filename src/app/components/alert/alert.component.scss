@@ -1,16 +1,6 @@
 @import '../../../styles.scss';
 
-.backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: #000000bf;
-  z-index: 50;
-}
-
-.alert-box {
+::ng-deep.mat-dialog-containe {
   position: fixed;
   border: 5px solid white;
   border-radius: 20px;
@@ -20,7 +10,7 @@
   height: 180px;
   padding: 25px 16px 25px 16px;
   z-index: 100;
-  background: $headerBg;
+  background: $headerBg !important;
   box-shadow: 0 2px 8px rbga(0, 0, 0, 0.26);
 }
 

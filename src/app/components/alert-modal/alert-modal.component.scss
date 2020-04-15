@@ -1,0 +1,41 @@
+@import '../../../styles.scss';
+
+.alert-box {
+  position: fixed;
+  border: 5px solid white;
+  border-radius: 20px;
+  top: 37.5%;
+  left: 37.5%;
+  width: 25vw;
+  height: 180px;
+  padding: 25px 16px 25px 16px;
+  z-index: 100;
+  background: $headerBg;
+  box-shadow: 0 2px 8px rbga(0, 0, 0, 0.26);
+}
+
+.alert-box p {
+  font-size: 18px;
+  color: white;
+  padding: 8px 0 0 0;
+  font-weight: 500;
+  text-align: center;
+  font-family: CaviarDreams Bold;
+}
+
+.alert-box-actions {
+  text-align: center;
+}
+
+.alert-box-actions button {
+  margin-top: 30px;
+  border: 2px solid white;
+  border-radius: 8px;
+  background-color: white;
+  font-size: 16px;
+  font-family: CaviarDreams;
+  font-weight: 500 !important;
+  color: $headerBg !important;
+  height: 45px;
+  padding: 0px 20px;
+}

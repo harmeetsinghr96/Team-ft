@@ -17,7 +17,7 @@ export class MemberEffects {
               private router: Router) { }
 
   @Effect()
-  Member = this.actions$.pipe(
+  Members = this.actions$.pipe(
     ofType(types.MEMBER_LIST_START),
     switchMap(() => {
       return this.memberService.members();
@@ -40,7 +40,7 @@ export class MemberEffects {
   );
 
   @Effect()
-  Forgot = this.actions$.pipe(
+  MemberShow = this.actions$.pipe(
     ofType(types.MEMBER_SHOW_START),
 
     switchMap((memberData: MemberActions.MemberShowStart) => {

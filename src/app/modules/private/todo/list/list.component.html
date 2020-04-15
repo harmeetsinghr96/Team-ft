@@ -17,18 +17,18 @@
       </form>
 
       <div style="margin-top: -15px;">
-        <div class="example-box" *ngFor="let movie of movies" cdkDrag>
+        <div class="example-box" *ngFor="let todo of todos" cdkDrag>
           <mat-accordion class="w-100">
-            <mat-expansion-panel class="accordian" (click)="close($event, movie.name)">
+            <mat-expansion-panel class="accordian" (click)="close($event, todo.title)">
               <mat-expansion-panel-header class="arrow-expansion">
                 <mat-panel-title>
                   <mat-icon class="drag-icon">drag_indicator</mat-icon>
                 </mat-panel-title>
                 <mat-panel-title>
-                  {{ movie.ref_id }}
+                  {{ todo.ref_id }}
                 </mat-panel-title>
                 <mat-panel-title>
-                  {{ movie.title }}
+                  {{ todo.title }}
                 </mat-panel-title>
                 <mat-panel-title>
                   icons
@@ -36,7 +36,7 @@
               </mat-expansion-panel-header>
 
               <section class="pend-done w-100">
-                  <app-tasks [todoId]='movie.id'></app-tasks>
+                  <app-tasks [todoId]='todo.id'></app-tasks>
               </section>
 
             </mat-expansion-panel>
@@ -45,7 +45,7 @@
       </div>
 
 
-      <mat-paginator class="mt-4" [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+      <mat-paginator class="mt-4" [length]="todos.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
       </mat-paginator>
     </div>
   </div>
